@@ -5,3 +5,9 @@ node_modules
 /test
 /temp
 /test-repro
+
+# Backend data
+backend/uploads/
+backend/database.db
+*.sqlite
+*.db

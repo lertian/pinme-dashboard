@@ -261,3 +261,115 @@
         transform: translateY(0);
     }
 }
+
+.build-tools-hint {
+    margin: 1.5rem 0;
+    padding: 1.25rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.hint-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.75rem;
+}
+
+.hint-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.hint-list li {
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+.hint-list li strong {
+    color: #334155;
+}
+
+.hint-list li code {
+    background: #f1f5f9;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #2563eb;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.hint-help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #94a3b8;
+    border-radius: 50%;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: help;
+    margin-left: 6px;
+    background-color: transparent;
+    transition: all 0.2s;
+    vertical-align: middle;
+    filter: none;
+    opacity: 1;
+    position: relative;
+}
+
+.hint-help:hover {
+    color: #3b82f6;
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+    transform: scale(1.1);
+}
+
+/* Custom tooltip using title attribute */
+.hint-help::before {
+    content: attr(title);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1f2937;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 1000;
+    line-height: 1.4;
+}
+
+/* Tooltip arrow */
+.hint-help::after {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1f2937;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 1000;
+}
+
+.hint-help:hover::before,
+.hint-help:hover::after {
+    opacity: 1;
+}

@@ -260,6 +260,18 @@ const Dashboard = () => {
                             </div>
                         )}
 
+                        <div className="build-tools-hint">
+                            <h4 className="hint-title">支持的构建工具及目录：</h4>
+                            <ul className="hint-list">
+                                <li><strong>Vite:</strong> <code>dist/</code> <span className="hint-help" title="构建命令: npm run build">?</span></li>
+                                <li><strong>React (CRA):</strong> <code>build/</code> <span className="hint-help" title="构建命令: npm run build">?</span></li>
+                                <li><strong>Next.js:</strong> <code>out/</code> <span className="hint-help" title="构建命令: npm run build (需设置 output: 'export')">?</span></li>
+                                <li><strong>Vue CLI:</strong> <code>dist/</code> <span className="hint-help" title="构建命令: npm run build">?</span></li>
+                                <li><strong>Angular:</strong> <code>dist/</code> <span className="hint-help" title="构建命令: ng build">?</span></li>
+                                <li><strong>静态站点:</strong> <code>root/</code> <span className="hint-help" title="说明: 直接上传包含 index.html 的打包后文件夹即可">?</span></li>
+                            </ul>
+                        </div>
+
                         <div className="modal-actions-v2">
                             <Button type="button" variant="secondary" onClick={() => setIsUploadOpen(false)} disabled={uploading}>取消</Button>
                             <Button type="submit" loading={uploading} disabled={!selectedFiles || !projectName}>部署项目</Button>
@@ -281,9 +293,20 @@ const Dashboard = () => {
                     </div>
 
                     <div className="upload-tabs">
-                        <div className="tab-btn active">
-                            <span className="tab-icon">📂</span> 版本快速更新
-                        </div>
+                        <button
+                            className={`tab-btn ${uploadType === 'file' ? 'active' : ''}`}
+                            onClick={() => { setUploadType('file'); setSelectedFiles(null); }}
+                            disabled={uploading}
+                        >
+                            <span className="tab-icon">📄</span> 单文件
+                        </button>
+                        <button
+                            className={`tab-btn ${uploadType === 'folder' ? 'active' : ''}`}
+                            onClick={() => { setUploadType('folder'); setSelectedFiles(null); }}
+                            disabled={uploading}
+                        >
+                            <span className="tab-icon">📂</span> 文件夹
+                        </button>
                     </div>
 
                     <form onSubmit={handleUpdate}>
@@ -299,7 +322,8 @@ const Dashboard = () => {
                                 ref={fileInputRef}
                                 style={{ display: 'none' }}
                                 onChange={(e) => setSelectedFiles(e.target.files)}
-                                {...({ webkitdirectory: "", directory: "" } as any)}
+                                {...(uploadType === 'folder' ? { webkitdirectory: "", directory: "" } as any : {})}
+                                multiple={uploadType === 'file'}
                                 disabled={uploading}
                             />
 
@@ -319,8 +343,8 @@ const Dashboard = () => {
                                     </div>
                                 ) : (
                                     <>
-                                        <p className="drop-text">拖拽新版本项目文件到这里 或 <span className="blue-link">点击上传</span></p>
-                                        <p className="drop-hint">上传后将自动替换当前线上运行的版本。</p>
+                                        <p className="drop-text">拖拽{uploadType === 'file' ? '文件' : '文件夹'}到这里 或 <span className="blue-link">点击上传</span></p>
+                                        <p className="drop-hint">{uploadType === 'file' ? '建议上传 index.html 以获得最佳预览效果' : '请确保文件夹内包含 index.html'}</p>
                                     </>
                                 )}
                             </div>
@@ -340,6 +364,18 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         )}
+
+                        <div className="build-tools-hint">
+                            <h4 className="hint-title">支持的构建工具及目录：</h4>
+                            <ul className="hint-list">
+                                <li><strong>Vite:</strong> <code>dist/</code> <span className="hint-help" title="构建命令: npm run build">?</span></li>
+                                <li><strong>React (CRA):</strong> <code>build/</code> <span className="hint-help" title="构建命令: npm run build">?</span></li>
+                                <li><strong>Next.js:</strong> <code>out/</code> <span className="hint-help" title="构建命令: npm run build (需设置 output: 'export')">?</span></li>
+                                <li><strong>Vue CLI:</strong> <code>dist/</code> <span className="hint-help" title="构建命令: npm run build">?</span></li>
+                                <li><strong>Angular:</strong> <code>dist/</code> <span className="hint-help" title="构建命令: ng build">?</span></li>
+                                <li><strong>静态站点:</strong> <code>root/</code> <span className="hint-help" title="说明: 直接上传包含 index.html 的打包后文件夹即可">?</span></li>
+                            </ul>
+                        </div>
 
                         <div className="modal-actions-v2">
                             <Button type="button" variant="secondary" onClick={() => setIsUpdateOpen(false)} disabled={uploading}>取消</Button>

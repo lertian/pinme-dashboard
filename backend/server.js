@@ -368,10 +368,17 @@ app.post('/api/projects/:id/update', authenticateToken, upload.array('files'), (
     const project = get('SELECT * FROM projects WHERE id = ? AND user_id = ?', [projectId, req.user.id]);
     if (!project) return res.status(404).json({ error: '项目不存在' });
 
-    const newCid = `project-${Date.now()}`;
-    const projectDir = path.join(UPLOAD_DIR, newCid);
+    // 使用现有的 current_cid，保持链接不变
+    const currentCid = project.current_cid;
+    const projectDir = path.join(UPLOAD_DIR, currentCid);
+
+    // 清空现有目录内容（但保留目录本身）
+    if (fs.existsSync(projectDir)) {
+        fs.rmSync(projectDir, { recursive: true, force: true });
+    }
     fs.mkdirSync(projectDir, { recursive: true });
 
+    // 上传新文件到同一目录
     files.forEach(file => {
         const relativePath = file.originalname.replace(/\\/g, '/');
         const targetPath = path.join(projectDir, relativePath);
@@ -383,12 +390,14 @@ app.post('/api/projects/:id/update', authenticateToken, upload.array('files'), (
         fs.renameSync(file.path, targetPath);
     });
 
-    const previewUrl = `http://localhost:${PORT}/p/${newCid}`;
-    run('UPDATE projects SET current_cid = ?, preview_url = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?', [newCid, previewUrl, projectId]);
+    // 更新项目的 updated_at 时间戳，但保持 current_cid 和 preview_url 不变
+    run('UPDATE projects SET updated_at = CURRENT_TIMESTAMP WHERE id = ?', [projectId]);
 
+    // 创建新版本记录（用于版本历史）
     const latest = get('SELECT MAX(version_number) as v FROM project_versions WHERE project_id = ?', [projectId]);
     const nextV = (latest.v || 0) + 1;
-    run('INSERT INTO project_versions (project_id, version_number, ipfs_cid, preview_url) VALUES (?, ?, ?, ?)', [projectId, nextV, newCid, previewUrl]);
+    const previewUrl = project.preview_url; // 使用原有的 preview_url
+    run('INSERT INTO project_versions (project_id, version_number, ipfs_cid, preview_url) VALUES (?, ?, ?, ?)', [projectId, nextV, currentCid, previewUrl]);
 
     res.json(get('SELECT * FROM projects WHERE id = ?', [projectId]));
 });
