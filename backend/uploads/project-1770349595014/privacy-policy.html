@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>横琴出行小程序隐私协议</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+      background: #f0f4f8;
+      color: #333;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    .privacy-header {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: #fff;
+      padding: 50px 20px 35px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+      position: relative;
+    }
+
+    .privacy-header::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #fff;
+      border-radius: 2px;
+      opacity: 0.8;
+    }
+
+    .privacy-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 15px;
+      line-height: 1.4;
+      letter-spacing: 1px;
+    }
+
+    .privacy-header .update-time {
+      font-size: 13px;
+      opacity: 0.95;
+      margin: 5px 0;
+    }
+
+    .privacy-content {
+      max-width: 1000px;
+      margin: -15px auto 0;
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      padding: 35px 25px;
+      box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section.preface {
+      background: linear-gradient(135deg, #e0f7ff 0%, #f0f9ff 100%);
+      padding: 25px;
+      border-radius: 16px;
+      border-left: 5px solid #4facfe;
+      box-shadow: 0 2px 10px rgba(79, 172, 254, 0.1);
+    }
+
+    .section.closing {
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(135deg, #e8f9f0 0%, #d4f4dd 100%);
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(52, 211, 153, 0.1);
+    }
+
+    .section.closing .thank-you {
+      font-size: 16px;
+      color: #15803d;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid transparent;
+      background: linear-gradient(to right, #4facfe 0%, #00f2fe 50%, transparent 50%);
+      background-size: 200% 3px;
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+    }
+
+    .section h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #475569;
+      margin: 18px 0 12px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #64748b;
+      margin: 0 0 12px;
+      text-align: justify;
+    }
+
+    .section p strong {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .section p a {
+      color: #3b82f6;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .section p a:hover {
+      text-decoration: underline;
+    }
+
+    .section ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .section ul li {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #64748b;
+      margin-bottom: 8px;
+      list-style: disc;
+    }
+
+    .section ul li strong {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, #f8fbff 0%, #f0f4f8 100%);
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #e1ebf5;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .info-card p {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .info-card p strong {
+      color: #1e293b;
+      min-width: 80px;
+      display: inline-block;
+    }
+
+    .table-container {
+      margin: 15px 0;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      display: table;
+    }
+
+    .info-table thead {
+      background: #f1f5f9;
+    }
+
+    .info-table thead th {
+      padding: 12px 10px;
+      text-align: left;
+      font-weight: 600;
+      color: #1e293b;
+      border-bottom: 2px solid #cbd5e1;
+    }
+
+    .info-table tbody tr {
+      border: 1px solid #e8f0f8;
+      background: #fff;
+      transition: all 0.2s ease;
+    }
+
+    .info-table tbody tr:hover {
+      background: linear-gradient(135deg, #f8fbff 0%, #f0f7ff 100%);
+      box-shadow: 0 2px 8px rgba(79, 172, 254, 0.08);
+    }
+
+    .info-table tbody tr:not(:last-child) td {
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .info-table tbody td {
+      padding: 12px 10px;
+      color: #64748b;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    /* 响应式表格卡片 */
+    .table-card-list {
+      display: none;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .table-card {
+      background: #fff;
+      border: 1px solid #e8f0f8;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(79, 172, 254, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .table-card:hover {
+      box-shadow: 0 4px 16px rgba(79, 172, 254, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .table-card-row {
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .table-card-row:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .table-card-label {
+      font-size: 13px;
+      color: #4facfe;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .table-card-value {
+      font-size: 14px;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    .notice-box {
+      background: linear-gradient(135deg, #fff4e6 0%, #fef3c7 100%);
+      border-left: 5px solid #ffa726;
+      padding: 18px 22px;
+      border-radius: 12px;
+      margin: 15px 0;
+      box-shadow: 0 2px 8px rgba(255, 167, 38, 0.1);
+    }
+
+    .notice-box p {
+      margin: 8px 0;
+      color: #92400e;
+      font-size: 14px;
+    }
+
+    .notice-box p strong {
+      color: #78350f;
+    }
+
+    .security-list {
+      display: grid;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .security-item {
+      background: linear-gradient(135deg, #f8fbff 0%, #f0f7ff 100%);
+      padding: 22px;
+      border-radius: 16px;
+      border: 1px solid #e1ebf5;
+      box-shadow: 0 2px 8px rgba(79, 172, 254, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .security-item:hover {
+      box-shadow: 0 4px 12px rgba(79, 172, 254, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .security-item h3 {
+      font-size: 16px;
+      color: #1e293b;
+      margin: 0 0 10px;
+    }
+
+    .security-item p {
+      margin: 8px 0;
+      color: #64748b;
+    }
+
+    .security-item ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .security-item ul li {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .contact-section {
+      display: grid;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .contact-item {
+      background: linear-gradient(135deg, #e0f7ff 0%, #f0f9ff 100%);
+      padding: 22px;
+      border-radius: 16px;
+      border: 1px solid #b3e5fc;
+      box-shadow: 0 2px 8px rgba(79, 172, 254, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      box-shadow: 0 4px 12px rgba(79, 172, 254, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .contact-item h3 {
+      font-size: 16px;
+      color: #0c4a6e;
+      margin: 0 0 10px;
+    }
+
+    .contact-item p {
+      margin: 8px 0;
+      color: #0369a1;
+    }
+
+    .contact-item p a {
+      color: #0284c7;
+      text-decoration: none;
+    }
+
+    .contact-item p a:hover {
+      text-decoration: underline;
+    }
+
+    .privacy-footer {
+      max-width: 1000px;
+      margin: 30px auto 0;
+      padding: 20px;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    .privacy-footer p {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .privacy-footer .company-name {
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    /* 移动端适配 */
+    @media screen and (max-width: 768px) {
+      .privacy-header {
+        padding: 30px 15px 25px;
+      }
+
+      .privacy-header h1 {
+        font-size: 22px;
+      }
+
+      .privacy-header .update-time {
+        font-size: 12px;
+      }
+
+      .privacy-content {
+        margin: -15px 10px 0;
+        padding: 20px 15px;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .section h2 {
+        font-size: 18px;
+      }
+
+      .section h3 {
+        font-size: 15px;
+      }
+
+      .section p,
+      .section ul li {
+        font-size: 14px;
+      }
+
+      /* 移动端隐藏表格，显示卡片 */
+      .table-container {
+        display: none;
+      }
+
+      .table-card-list {
+        display: grid;
+      }
+
+      .info-card {
+        padding: 15px;
+      }
+
+      .info-card p {
+        font-size: 14px;
+      }
+
+      .security-list,
+      .contact-section {
+        gap: 12px;
+      }
+
+      .security-item,
+      .contact-item {
+        padding: 15px;
+      }
+
+      .security-item h3,
+      .contact-item h3 {
+        font-size: 15px;
+      }
+
+      .security-item p,
+      .contact-item p {
+        font-size: 13px;
+      }
+    }
+
+    /* 打印样式 */
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .privacy-header {
+        background: #3b82f6;
+        color: #fff;
+      }
+
+      .privacy-content {
+        box-shadow: none;
+        margin: 0;
+      }
+
+      .table-container {
+        overflow: visible;
+      }
+
+      .info-table {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="privacy-header">
+    <h1>横琴出行小程序隐私协议</h1>
+    <p class="update-time">更新日期：2025-11-05</p>
+    <p class="update-time">生效日期：2025-11-05</p>
+  </div>
+
+  <div class="privacy-content">
+    <section class="section preface">
+      <h2>【前言】</h2>
+      <p>
+        本政策由横琴出行小程序开发者"横琴粤澳深度合作区城市规划和建设局"（以下简称"我们"或"开发者"）制定，适用于横琴出行小程序（下称"本小程序"）向您提供的周边停车、充电、公交、意见反馈等全部功能。我们依据《个人信息保护法》《网络安全法》《未成年人保护法》等法律法规，以"最小必要、明示同意、安全保护、可撤回、可注销"为原则处理您的个人信息。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>一、运营者基本信息</h2>
+      <div class="info-card">
+        <p><strong>名称：</strong>横琴粤澳深度合作区城市规划和建设局</p>
+        <p><strong>注册地址：</strong>广东省横琴粤澳深度合作区横琴镇德政街 26 号</p>
+        <p><strong>邮箱：</strong><a href="mailto:hqcxsjjk@dhqtech.com">hqcxsjjk@dhqtech.com</a></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>二、我们收集哪些个人信息 & 用途</h2>
+      <!-- 桌面端表格 -->
+      <div class="table-container">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>业务功能</th>
+              <th>个人信息字段</th>
+              <th>收集目的</th>
+              <th>收集方式</th>
+              <th>是否必要</th>
+              <th>拒绝后果</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>周边停车/充电/公交站</td>
+              <td>精确位置（GPS）</td>
+              <td>计算并展示您周边 1.5km 内停车场、充电桩、单车站点、公交站等</td>
+              <td>首次使用功能时弹窗申请</td>
+              <td>是</td>
+              <td>仅无法使用地图类功能，其他功能正常</td>
+            </tr>
+            <tr>
+              <td>意见反馈</td>
+              <td>手机号</td>
+              <td>便于我们联系您、核实并回复处理结果</td>
+              <td>用户输入 + 弹窗提示</td>
+              <td>否</td>
+              <td>可匿名反馈，但无法收到回复</td>
+            </tr>
+            <tr>
+              <td>上传问题截图/视频</td>
+              <td>相册/摄像头内容</td>
+              <td>直观展示问题现场，便于我们定位和整改</td>
+              <td>用户主动选择/拍摄</td>
+              <td>否</td>
+              <td>无法上传图片/视频，仍可用文字反馈</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- 移动端卡片 -->
+      <div class="table-card-list">
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">业务功能</span>
+            <div class="table-card-value">周边停车/充电/公交站</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">个人信息字段</span>
+            <div class="table-card-value">精确位置（GPS）</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">收集目的</span>
+            <div class="table-card-value">计算并展示您周边 1.5km 内停车场、充电桩、单车站点、公交站等</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">收集方式</span>
+            <div class="table-card-value">首次使用功能时弹窗申请</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">是否必要</span>
+            <div class="table-card-value">是</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">拒绝后果</span>
+            <div class="table-card-value">仅无法使用地图类功能，其他功能正常</div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">业务功能</span>
+            <div class="table-card-value">意见反馈</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">个人信息字段</span>
+            <div class="table-card-value">手机号</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">收集目的</span>
+            <div class="table-card-value">便于我们联系您、核实并回复处理结果</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">收集方式</span>
+            <div class="table-card-value">用户输入 + 弹窗提示</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">是否必要</span>
+            <div class="table-card-value">否</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">拒绝后果</span>
+            <div class="table-card-value">可匿名反馈，但无法收到回复</div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">业务功能</span>
+            <div class="table-card-value">上传问题截图/视频</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">个人信息字段</span>
+            <div class="table-card-value">相册/摄像头内容</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">收集目的</span>
+            <div class="table-card-value">直观展示问题现场，便于我们定位和整改</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">收集方式</span>
+            <div class="table-card-value">用户主动选择/拍摄</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">是否必要</span>
+            <div class="table-card-value">否</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">拒绝后果</span>
+            <div class="table-card-value">无法上传图片/视频，仍可用文字反馈</div>
+          </div>
+        </div>
+      </div>
+      <div class="notice-box">
+        <p><strong>敏感个人信息说明：</strong>位置、手机号、相册/摄像头内容属于敏感信息，我们将在首次使用对应功能时通过弹窗单独征得您的明示同意；不会用于任何与上述目的无关的场景。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>三、第三方 SDK 与共享</h2>
+      <!-- 桌面端表格 -->
+      <div class="table-container">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>序号</th>
+              <th>名称</th>
+              <th>提供方/来源</th>
+              <th>下载渠道</th>
+              <th>SDK用途</th>
+              <th>SDK使用的权限/收集的用户个人信息</th>
+              <th>是否外传数据</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>输入提示</td>
+              <td>高德</td>
+              <td>高德官网</td>
+              <td>关键字查找出和关键字匹配的地址</td>
+              <td>无</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>逆地址编码</td>
+              <td>高德</td>
+              <td>高德官网</td>
+              <td>经纬度转化成地址名称</td>
+              <td>无</td>
+              <td>无</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 移动端卡片 -->
+      <div class="table-card-list">
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">序号</span>
+            <div class="table-card-value">1</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">名称</span>
+            <div class="table-card-value">输入提示</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">提供方/来源</span>
+            <div class="table-card-value">高德</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">下载渠道</span>
+            <div class="table-card-value">高德官网</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">SDK用途</span>
+            <div class="table-card-value">关键字查找出和关键字匹配的地址</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">SDK使用的权限/收集的用户个人信息</span>
+            <div class="table-card-value">无</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">是否外传数据</span>
+            <div class="table-card-value">无</div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">序号</span>
+            <div class="table-card-value">2</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">名称</span>
+            <div class="table-card-value">逆地址编码</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">提供方/来源</span>
+            <div class="table-card-value">高德</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">下载渠道</span>
+            <div class="table-card-value">高德官网</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">SDK用途</span>
+            <div class="table-card-value">经纬度转化成地址名称</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">SDK使用的权限/收集的用户个人信息</span>
+            <div class="table-card-value">无</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">是否外传数据</span>
+            <div class="table-card-value">无</div>
+          </div>
+        </div>
+      </div>
+      <div class="notice-box">
+        <p>除上述 SDK 外，我们不会主动向任何第三方共享、转让您的个人信息；</p>
+        <p>如业务需要新增合作伙伴或跨境传输，我们将重新弹窗征得您的单独同意，并确保签署不低于本政策标准的保密与安全协议。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>四、存储期限与到期处理</h2>
+      <!-- 桌面端表格 -->
+      <div class="table-container">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>信息类型</th>
+              <th>存储地点</th>
+              <th>存储期限</th>
+              <th>到期处理方式</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>位置信息</td>
+              <td>横琴政务云</td>
+              <td>实时使用，不存储</td>
+              <td>删除或匿名化</td>
+            </tr>
+            <tr>
+              <td>手机号</td>
+              <td>横琴政务云</td>
+              <td>问题反馈关闭后 30 天</td>
+              <td>删除或匿名化</td>
+            </tr>
+            <tr>
+              <td>图片</td>
+              <td>横琴政务云</td>
+              <td>问题反馈关闭后30天</td>
+              <td>删除或匿名化</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 移动端卡片 -->
+      <div class="table-card-list">
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">信息类型</span>
+            <div class="table-card-value">位置信息</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">存储地点</span>
+            <div class="table-card-value">横琴政务云</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">存储期限</span>
+            <div class="table-card-value">实时使用，不存储</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">到期处理方式</span>
+            <div class="table-card-value">删除或匿名化</div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">信息类型</span>
+            <div class="table-card-value">手机号</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">存储地点</span>
+            <div class="table-card-value">横琴政务云</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">存储期限</span>
+            <div class="table-card-value">问题反馈关闭后 30 天</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">到期处理方式</span>
+            <div class="table-card-value">删除或匿名化</div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">信息类型</span>
+            <div class="table-card-value">图片</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">存储地点</span>
+            <div class="table-card-value">横琴政务云</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">存储期限</span>
+            <div class="table-card-value">问题反馈关闭后30天</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">到期处理方式</span>
+            <div class="table-card-value">删除或匿名化</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>五、安全保护措施</h2>
+      <div class="security-list">
+        <div class="security-item">
+          <h3>🔒 加密</h3>
+          <p>传输采用 HTTPS+TLS1.3；手机号、位置等敏感数据使用 AES-256 加密存储。</p>
+        </div>
+        <div class="security-item">
+          <h3>🛡️ 权限管控</h3>
+          <p>最小化授权，仅工单处理人员可查原始数据。</p>
+        </div>
+        <div class="security-item">
+          <h3>📋 安全制度</h3>
+          <ul>
+            <li>已制定《数据安全管理制度》《个人信息安全事件应急预案》；</li>
+            <li>每年至少开展一次应急演练与员工培训，记录存档 ≥ 3 年；</li>
+            <li>发生或可能发生泄露时，我们将立即启动应急预案，并在 72 小时内向您及主管部门告知。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、您的权利及行使路径</h2>
+      <!-- 桌面端表格 -->
+      <div class="table-container">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>权利</th>
+              <th>操作路径</th>
+              <th>处理时限</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>删除已填电话号码</td>
+              <td>发邮件至邮箱 hqcxsjjk@dhqtech.com</td>
+              <td>15 个工作日内</td>
+            </tr>
+            <tr>
+              <td>撤回同意</td>
+              <td>微信右上角"…"—"设置"—权限管理—关闭位置/相册授权</td>
+              <td>立即生效</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 移动端卡片 -->
+      <div class="table-card-list">
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">权利</span>
+            <div class="table-card-value">删除已填电话号码</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">操作路径</span>
+            <div class="table-card-value">发邮件至邮箱 hqcxsjjk@dhqtech.com</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">处理时限</span>
+            <div class="table-card-value">15 个工作日内</div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-card-row">
+            <span class="table-card-label">权利</span>
+            <div class="table-card-value">撤回同意</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">操作路径</span>
+            <div class="table-card-value">微信右上角"…"—"设置"—权限管理—关闭位置/相册授权</div>
+          </div>
+          <div class="table-card-row">
+            <span class="table-card-label">处理时限</span>
+            <div class="table-card-value">立即生效</div>
+          </div>
+        </div>
+      </div>
+      <div class="notice-box">
+        <p><strong>死者个人信息权利：</strong></p>
+        <p>近亲属为自身合法、正当利益，可通过书面+死亡证明+亲属关系证明申请查阅、复制、更正、删除死者个人信息；死者生前另有安排的除外。我们将于收到完整材料后 15 个工作日内处理。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>七、未成年人保护</h2>
+      <p>
+        本小程序主要面向 <strong>18 周岁以上</strong>用户。如您在 14 周岁以下，请在监护人陪同下阅读并征得监护人同意后使用；我们一旦发现已收集 14 周岁以下儿童信息而未获监护人同意，将立即删除。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>八、隐私协议变更与通知</h2>
+      <p>
+        本小程序隐私协议，见首页-其他-隐私协议，因功能调整或法律法规变化，我们需变更政策时，将在小程序首页弹窗提示、或通过电子邮件/微信站内信等方式通知您，重大变更将重新征得您的同意。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>九、投诉与举报</h2>
+      <div class="contact-section">
+        <div class="contact-item">
+          <h3>开发者客服</h3>
+          <p>邮箱：<a href="mailto:hqcxsjjk@dhqtech.com">hqcxsjjk@dhqtech.com</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>外部投诉</h3>
+          <p>中央网信办举报中心：<a href="https://www.12377.cn" target="_blank">www.12377.cn</a></p>
+          <p>微信客户端：小程序主页-右上角"…"—"投诉"</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <p class="thank-you">
+        感谢您阅读完整版《横琴出行小程序隐私协议》！我们将持续优化技术与制度，守护您的个人信息与隐私安全。
+      </p>
+    </section>
+  </div>
+
+  <div class="privacy-footer">
+    <p>横琴出行</p>
+    <p class="company-name">横琴粤澳深度合作区城市规划和建设局</p>
+    <p class="company-name">© <script>document.write(new Date().getFullYear())</script> 版权所有</p>
+  </div>
+</body>
+</html>

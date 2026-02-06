@@ -1,0 +1,1 @@
+import{_ as t}from"./index-rwQwEmuu.js";import{r as n,o,l,h as e,M as u}from"./index-DWhHYVhN.js";const i={__name:"index",setup(c){const r=n("/travel-mgt/swagger-ui/index.html");return(m,s)=>(o(),l(e(t),{src:e(r),"onUpdate:src":s[0]||(s[0]=a=>u(r)?r.value=a:null)},null,8,["src"]))}};export{i as default};

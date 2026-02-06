@@ -1,0 +1,1 @@
+import{_ as s,k as t,c as r,b as c,o}from"./index-M_WW35Lj.js";const n={class:"app-container iframe-wrap"},l=["src"],_={__name:"index",setup(d){const e="/travel-mgt",a=t(()=>`${e}/druid/login.html`);return(i,m)=>(o(),r("div",n,[c("iframe",{src:a.value,class:"iframe-full",frameborder:"0",title:"数据监控"},null,8,l)]))}},u=s(_,[["__scopeId","data-v-db576ceb"]]);export{u as default};

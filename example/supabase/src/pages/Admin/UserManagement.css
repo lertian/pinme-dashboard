@@ -1,0 +1,63 @@
+.admin-container {
+    min-height: 100vh;
+}
+
+.admin-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.table-container {
+    margin-top: 2rem;
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.user-table th,
+.user-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.user-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #4b5563;
+    font-size: 0.875rem;
+}
+
+.username-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.admin-badge {
+    font-size: 0.625rem;
+    background: #ede9fe;
+    color: #7c3aed;
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    color: #4f46e5;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.text-btn:hover {
+    text-decoration: underline;
+}

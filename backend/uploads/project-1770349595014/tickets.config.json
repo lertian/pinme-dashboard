@@ -1,0 +1,334 @@
+[
+  {
+    "title": "橫琴交通方式",
+    "titleHant": "橫琴交通方式",
+    "types": [
+      {
+        "id": "QINZHIXING",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_1.png",
+        "text": "琴智行",
+        "textHant": "琴智行",
+        "link": "wxapp://wx706fb83eb4c54ce2/pages/index/index",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_6.png",
+            "text": "云闪付",
+            "textHant": "雲閃付",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_5.png",
+            "text": "银联卡",
+            "textHant": "銀聯卡",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_2.png",
+            "text": "微信",
+            "textHant": "微信",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_3.png",
+            "text": "一戶通",
+            "textHant": "一戶通",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "TONGQINHAO",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_2.png",
+        "text": "通勤车",
+        "textHant": "通勤車",
+        "link": "wxapp://wx7427a34d0c395fbc/pages/index/index?lineKindId=375859154391365",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_6.png",
+            "text": "云闪付",
+            "textHant": "雲閃付",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_2.png",
+            "text": "微信",
+            "textHant": "微信",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_3.png",
+            "text": "一戶通",
+            "textHant": "一戶通",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "ZHUHAIBASHI",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_3.png",
+        "text": "珠海巴士",
+        "textHant": "珠海巴士",
+        "link": "wxapp://wxbe3e13998d884cdd/pages/main/index",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_2.png",
+            "text": "微信",
+            "textHant": "微信",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "DONGTAIGONGJIAO",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_4.png",
+        "text": "动态公交",
+        "textHant": "動態公交",
+        "link": "wxapp://wx814fe99beac73981/pages/home/home?current=449",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_2.png",
+            "text": "微信",
+            "textHant": "微信",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "HENGQINMATOU",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_5.png",
+        "text": "横琴客运码头",
+        "textHant": "橫琴客運碼頭",
+        "link": "wxapp://wxe804c18fb2f82bf3/page/ship/hengQinPage/hengQinIndex/hengQinIndex",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_2.png",
+            "text": "微信",
+            "textHant": "微信",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "QINGJUDANCHE",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_6.png",
+        "text": "青桔单车",
+        "textHant": "青桔單車",
+        "link": "wxapp://wx9e9b87595c41dbb7/pages/init/init",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_2.png",
+            "text": "微信",
+            "textHant": "微信",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "MEITUANDANCHE",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_7.png",
+        "text": "美团单车",
+        "textHant": "美團單車",
+        "link": "wxapp://wxde8ac0a21135c07d/mobike/pages/index/index",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_2.png",
+            "text": "微信",
+            "textHant": "微信",
+            "link": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "澳门交通方式",
+    "titleHant": "澳門交通方式",
+    "types": [
+      {
+        "id": "JINBA",
+        "head": "跨境陆路交通",
+        "headHant": "跨境陸路交通",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_8.png",
+        "text": "金巴",
+        "textHant": "金巴",
+        "link": "https://dis.dsat.gov.mo:8017/hzmbus?lang=zh-hans",
+        "linkHant": "https://dis.dsat.gov.mo:8017/hzmbus?lang=zh-hant",
+        "linkPt": "https://dis.dsat.gov.mo:8017/hzmbus?lang=pt",
+        "linkEn": "https://dis.dsat.gov.mo:8017/hzmbus?lang=en",
+        "linkHans": "https://dis.dsat.gov.mo:8017/hzmbus?lang=zh-hans",
+        "link": "/pages/index/index?name=金巴",
+        "linkHant": "/pages/index/index?name=金巴",
+        "linkPt": "/pages/index/index?name=金巴",
+        "linkEn": "/pages/index/index?name=金巴",
+        "linkHans": "/pages/index/index?name=金巴",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_3.png",
+            "text": "一戶通",
+            "textHant": "一戶通",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_4.png",
+            "text": "",
+            "textHant": "",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "KUAJINGCHUZUCHE",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_9.png",
+        "text": "跨境出租车",
+        "textHant": "跨境出租車",
+        "link": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=sc",
+        "linkHant": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=tc",
+        "linkPt": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=pt",
+        "linkEn": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=en",
+        "linkHans": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=sc",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_3.png",
+            "text": "一戶通",
+            "textHant": "一戶通",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_4.png",
+            "text": "",
+            "textHant": "",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "CHUANGBAN",
+        "head": "海上及空中交通",
+        "headHant": "海上及空中交通",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_10.png",
+        "text": "船班",
+        "textHant": "船班",
+        "link": "https://dis.dsat.gov.mo:8017/ferry?lang=zh-hans",
+        "linkHant": "https://dis.dsat.gov.mo:8017/ferry?lang=zh-hant",
+        "linkPt": "https://dis.dsat.gov.mo:8017/ferry?lang=pt",
+        "linkEn": "https://dis.dsat.gov.mo:8017/ferry?lang=en",
+        "linkHans": "https://dis.dsat.gov.mo:8017/ferry?lang=zh-hans",
+        "link": "/pages/index/index?name=船班",
+        "linkHant": "/pages/index/index?name=船班",
+        "linkPt": "/pages/index/index?name=船班",
+        "linkEn": "/pages/index/index?name=船班",
+        "linkHans": "/pages/index/index?name=船班",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_3.png",
+            "text": "一戶通",
+            "textHant": "一戶通",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_4.png",
+            "text": "",
+            "textHant": "",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "id": "HANGBAN",
+        "icon": "https://hqcx.hengqin.gov.cn/static/image/way_11.png",
+        "text": "航班",
+        "textHant": "航班",
+        "link": "https://dis.dsat.gov.mo:8017/flight?lang=zh-hans",
+        "linkHant": "https://dis.dsat.gov.mo:8017/flight?lang=zh-hant",
+        "linkPt": "https://dis.dsat.gov.mo:8017/flight?lang=pt",
+        "linkEn": "https://dis.dsat.gov.mo:8017/flight?lang=en",
+        "linkHans": "https://dis.dsat.gov.mo:8017/flight?lang=zh-hans",
+        "link": "/pages/index/index?name=航班",
+        "linkHant": "/pages/index/index?name=航班",
+        "linkPt": "/pages/index/index?name=航班",
+        "linkEn": "/pages/index/index?name=航班",
+        "linkHans": "/pages/index/index?name=航班",
+        "apps": [
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_3.png",
+            "text": "一戶通",
+            "textHant": "一戶通",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_1.png",
+            "text": "支付宝",
+            "textHant": "支付寶",
+            "link": ""
+          },
+          {
+            "icon": "https://hqcx.hengqin.gov.cn/static/image/p_4.png",
+            "text": "",
+            "textHant": "",
+            "link": ""
+          }
+        ]
+      }
+    ]
+  }
+]

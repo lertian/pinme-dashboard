@@ -1,0 +1,1 @@
+import{_ as a}from"./index-rwQwEmuu.js";import{r as s,o as n,c as o,e as l,h as c}from"./index-DWhHYVhN.js";const p={__name:"index",setup(u){const e=s("/travel-mgt/druid/login.html");return(m,r)=>(n(),o("div",null,[l(c(a),{src:e.value,"onUpdate:src":r[0]||(r[0]=t=>e.value=t)},null,8,["src"])]))}};export{p as default};

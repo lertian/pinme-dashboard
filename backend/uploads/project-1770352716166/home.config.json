@@ -1,0 +1,586 @@
+{
+  "dataSource": [
+    {
+      "id": "LatestImportantNews",
+      "name": "最新/重要资讯",
+      "nameMo": "最新/重要資訊",
+      "titles": [
+        {
+          "name": "横琴出行",
+          "nameMo": "橫琴出行",
+          "id": "HQ"
+        },
+        {
+          "name": "澳门出行",
+          "nameMo": "澳門出行",
+          "id": "MACAU"
+        }
+      ],
+      "short": "重要资讯",
+      "shortMo": "重要資訊",
+      "isLocalDelete": false
+    },
+    {
+      "id": "TransportInHengqin",
+      "name": "横琴交通方式",
+      "nameMo": "橫琴交通方式",
+      "short": "横琴交通",
+      "shortMo": "橫琴交通",
+      "isLocalDelete": false,
+      "groupList": [
+        {
+          "groupName": "公共交通",
+          "groupNameMo": "公共交通",
+          "groupCode": "PUBLIC_TRANSPORTATION",
+          "entryList": [
+            {
+              "id": "ZHUHAIBASHI",
+              "name": "公交",
+              "nameMo": "公交",
+              "href": "wxapp://wxbe3e13998d884cdd/pages/main/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/zhuhaibashi.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "DONGTAIGONGJIAO",
+              "name": "动态公交",
+              "nameMo": "動態公交",
+              "href": "wxapp://wx814fe99beac73981/pages/home/home?current=449",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/dongtaigongjiao.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "TONGQINHAO",
+              "name": "通勤车",
+              "nameMo": "通勤車",
+              "href": "wxapp://wx98d802f3b76e9491/pages/Home/Home",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/tongqinhao.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "QINGGUI",
+              "name": "城际轨道",
+              "nameMo": "广珠軌道",
+              "href": "/pages/intercity/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/guangzhuchengji.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "HENGQINMATOU",
+              "name": "横琴码头",
+              "nameMo": "橫琴碼頭",
+              "href": "wxapp://wxe804c18fb2f82bf3/page/ship/hengQinPage/hengQinIndex/hengQinIndex",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/hengqinmatou.png",
+              "isLocalDelete": false,
+              "border": "1px solid #ddd"
+            },
+            {
+              "id": "GAODEDACHE",
+              "name": "高德打车",
+              "nameMo": "高德打車",
+              "href": "wxapp://wxbc0cf9b963bd3550/onlineCar/online_index/page/Home/Home?gd_from=hengqinchuxing",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/gaode.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "WARMCAR",
+              "name": "共享汽车",
+              "nameMo": "共享汽車",
+              "href": "https://warmcar.com/h5/warmcarzh/#/home",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/warmcar.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "OLDERCAR",
+              "name": "老人叫车",
+              "nameMo": "老人叫車",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/oldercar.png",
+              "isLocalDelete": false,
+              "callPhoneNumber": "95128"
+            }
+          ]
+        },
+        {
+          "groupName": "自动驾驶",
+          "groupNameMo": "自動駕駛",
+          "groupCode": "AUTONOMOUS_DRIVING",
+          "entryList": [
+            {
+              "id": "QINZHIXING",
+              "name": "小巴",
+              "nameMo": "小巴",
+              "href": "wxapp://wx706fb83eb4c54ce2/pages/index/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/qinzhixing.png",
+              "isLocalDelete": false,
+              "groupType": "AUTONOMOUS_DRIVING"
+            },
+            {
+              "id": "ROBOTAXI",
+              "name": "的士",
+              "nameMo": "的士",
+              "href": "wxapp://wxc56e15e11bda0d0b/packageRoboTaxi/pages/RoboTaxi/RoboTaxi",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/ruqichuxing.svg",
+              "isLocalDelete": false,
+              "hidden": false,
+              "groupType": "AUTONOMOUS_DRIVING"
+            }
+          ]
+        },
+        {
+          "groupName": "驾车",
+          "groupNameMo": "駕車",
+          "groupCode": "DRIVING",
+          "entryList": [
+            {
+              "id": "TINGCHECHONGDIAN",
+              "name": "停车充电",
+              "nameMo": "停車充電",
+              "href": "/pages/map/index?layer=CHARGING,PARKING",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/tingchechongdian.png",
+              "isLocalDelete": false,
+              "isSwitchTab": true,
+              "iconScale": 1.21
+            },
+            {
+              "id": "JIAYOUZHAN",
+              "name": "加油站",
+              "nameMo": "加油站",
+              "href": "/pages/map/index?layer=GAS",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/jiayouzhan.png",
+              "isLocalDelete": false,
+              "isSwitchTab": true
+            },
+            {
+              "id": "QINYITING",
+              "name": "琴易停\n（停车）",
+              "nameMo": "琴易停\n（停車）",
+              "href": "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMTUwMTQ4NA==&action=getalbum&album_id=3458958835573145610#wechat_redirect",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/qinyiting.png",
+              "href": "/pages/index/index?name=琴易停",
+              "isLocalDelete": false,
+              "border": "1px solid #ddd"
+            },
+            {
+              "id": "QINYICHONG",
+              "name": "琴易充\n（充电）",
+              "nameMo": "琴易充\n（充電）",
+              "href": "wxapp://wx177bbe83d87bdafc/pages/map/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/qinyichong.png",
+              "isLocalDelete": false,
+              "border": "1px solid #ddd"
+            },
+            {
+              "id": "SHUNYICHONG",
+              "name": "顺易充\n（充电）",
+              "nameMo": "順易充\n（充電）",
+              "href": "wxapp://wxae048f582b92a2ab/pages/mapStation/map",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/shunyichong.png",
+              "isLocalDelete": false,
+              "border": "1px solid #ddd"
+            }
+          ]
+        },
+        {
+          "groupName": "骑行",
+          "groupNameMo": "騎行",
+          "groupCode": "CYCLING",
+          "entryList": [
+            {
+              "id": "DANCHEYIZHANGTU",
+              "name": "共享单车",
+              "nameMo": "共享單車",
+              "href": "/pages/map/index?layer=MT_BIKE",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/dancheyizhangtu.png",
+              "isLocalDelete": false,
+              "isSwitchTab": true,
+              "iconScale": 1.21
+            },
+            {
+              "id": "MEITUANDANCHE",
+              "name": "美团单车",
+              "nameMo": "美團單車",
+              "href": "wxapp://wxde8ac0a21135c07d/mobike/pages/index/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/meituandanche.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "QINGJUDANCHE",
+              "name": "青桔单车",
+              "nameMo": "青桔單車",
+              "href": "wxapp://wx9e9b87595c41dbb7/pages/init/init",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/qingjudanche.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "HALOUDANCHE",
+              "name": "哈啰单车",
+              "nameMo": "哈啰單車",
+              "href": "wxapp://wxb937e3d0b3ca117e/pages/index/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/haloudanche.png",
+              "isLocalDelete": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "QinaoCrossBorder",
+      "name": "琴澳跨境交通",
+      "nameMo": "琴澳跨境交通",
+      "isLocalDelete": false,
+      "entryList": [
+        {
+          "id": "KUAJINGTONGQINXIAN",
+          "name": "跨境通勤线",
+          "nameMo": "跨境通勤線",
+          "href": "wxapp://wx98d802f3b76e9491/pages/Home/Home?type=1",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/kuajingtongqinxian.png",
+          "isLocalDelete": false
+        }
+      ]
+    },
+    {
+      "id": "TravelInformation",
+      "name": "出行资讯",
+      "nameMo": "出行資訊",
+      "isLocalDelete": false,
+      "entryList": [
+        {
+          "id": "DAOLUGONGCHENGZIXUN",
+          "name": "道路资讯",
+          "nameMo": "道路資訊",
+          "href": "/pages/home/road-list/index",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/daolugongchengzixun.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "HUODONGZIXUN",
+          "name": "活动资讯",
+          "nameMo": "活動資訊",
+          "href": "/pages/home/activity-list/index",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/huodongzixun.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "ZHONGXINGHUOCHE",
+          "name": "货车\n(含工程车)",
+          "nameMo": "貨車\n(含工程車)",
+          "href": "/pages/truck/index",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/zhongxinghuoche.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "HENGQINGONGYUAN",
+          "name": "公园",
+          "nameMo": "公園",
+          "href": "/pages/home/park/index",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/hengqingongyuan.png",
+          "isLocalDelete": false
+        }
+      ]
+    },
+    {
+      "id": "FirstLineHengqinPortTraffic",
+      "name": "横琴口岸交通",
+      "nameMo": "橫琴口岸交通",
+      "isLocalDelete": false,
+      "groupList": [
+        {
+          "groupName": "横琴口岸（横琴侧）",
+          "groupNameMo": "横琴口岸（横琴側）",
+          "groupCode": "HQ_PORT_HENQIN_STATION",
+          "entryList": [
+            {
+              "id": "KOUANSHIPIN",
+              "name": "实时通关",
+              "nameMo": "實時通關",
+              "href": "/pages/home/port-video/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/kouanshipin.png",
+              "isLocalDelete": false,
+              "showOfflineModal": false
+            },
+            {
+              "id": "KOUANTONGGUANZHINAN",
+              "name": "通关指南",
+              "nameMo": "通關指南",
+              "href": "/pages/home/guide/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/kouantongguanzhinan.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "JIAOTONGZHIYIN",
+              "name": "交通指引",
+              "nameMo": "交通指引",
+              "href": "/pages/markdown/index",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/jiaotongzhiyin.png",
+              "isLocalDelete": false
+            }
+          ]
+        },
+        {
+          "groupName": "横琴口岸（澳门侧）",
+          "groupNameMo": "横琴口岸（澳门側）",
+          "groupCode": "HQ_PORT_MACAO_STATION",
+          "hidden": false,
+          "entryList": [
+            {
+              "id": "GONGGONGBASHI",
+              "name": "公共巴士",
+              "nameMo": "公共巴士",
+              "href": "wxapp://wx0ccdff58e44da343/pages/index/index",
+              "href": "/pages/home/hotel-bus/station?target=wxapp%3A%2F%2Fwx0ccdff58e44da343%2Fpages%2Findex%2Findex",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/bashibaozhan.png",
+              "isLocalDelete": false
+            },
+            {
+              "id": "CHUANSUOBASHI",
+              "name": "酒店娱乐场\n穿梭巴士",
+              "nameMo": "酒店娛樂場\n穿梭巴士",
+              "href": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=zh-hans",
+              "hrefHant": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=zh-hant",
+              "hrefPt": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=pt",
+              "hrefEn": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=en",
+              "hrefHans": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=zh-hans",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/chuansuobashi.png",
+              "href": "/pages/home/hotel-bus/index",
+              "hrefHant": "/pages/home/hotel-bus/index",
+              "hrefPt": "/pages/home/hotel-bus/index",
+              "hrefEn": "/pages/home/hotel-bus/index",
+              "hrefHans": "/pages/home/hotel-bus/index",
+              "isLocalDelete": false
+            },
+            {
+              "id": "MACAOQINGGUI",
+              "name": "澳门轻轨",
+              "nameMo": "澳門輕軌",
+              "href": "https://dis.dsat.gov.mo:8017/mlm?lang=zh-hans",
+              "hrefHant": "https://dis.dsat.gov.mo:8017/mlm?lang=zh-hant",
+              "hrefPt": "https://dis.dsat.gov.mo:8017/mlm?lang=pt",
+              "hrefEn": "https://dis.dsat.gov.mo:8017/mlm?lang=en",
+              "hrefHans": "https://dis.dsat.gov.mo:8017/mlm?lang=zh-hans",
+              "icon": "https://hqcx.hengqin.gov.cn/static/home/qinggui.png",
+              "href": "/pages/index/index?name=轻轨",
+              "hrefHant": "/pages/index/index?name=轻轨",
+              "hrefPt": "/pages/index/index?name=轻轨",
+              "hrefEn": "/pages/index/index?name=轻轨",
+              "hrefHans": "/pages/index/index?name=轻轨",
+              "href": "/pages/home/light-rail/index",
+              "hrefHant": "/pages/home/light-rail/index",
+              "hrefPt": "/pages/home/light-rail/index",
+              "hrefEn": "/pages/home/light-rail/index",
+              "isLocalDelete": false,
+              "hidden": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SecondLineChannelInformation",
+      "name": "出入岛通道（二线）",
+      "nameMo": "出入島通道（二線）",
+      "isLocalDelete": false,
+      "entryList": [
+        {
+          "id": "HENGQINDAQIAOZIXUN",
+          "name": "行车指引",
+          "nameMo": "行車指引",
+          "href": "",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/xingchezhiyin.png",
+          "isLocalDelete": false,
+          "hidden": true
+        },
+        {
+          "id": "HENGQINDAQIAOZIXUN",
+          "name": "横琴大桥",
+          "nameMo": "橫琴大橋",
+          "href": "/pages/home/second-channel-news/index?pageId=hengqinBridgeNews",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/hengqindaqiaozixun.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "SHENJINTONGDAOZIXUN",
+          "name": "深井通道",
+          "nameMo": "深井通道",
+          "href": "/pages/home/second-channel-news/index?pageId=shenjingChannelNews",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/shenjintongdaozixun.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "SHIZIMENSUIDAOZIXUN",
+          "name": "十字门隧道",
+          "nameMo": "十字門隧道",
+          "href": "/pages/home/second-channel-news/index?pageId=shizimenChannelNews",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/shizimensuidaozixun.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "HENGQINSUIDAOZIXUN",
+          "name": "横琴隧道",
+          "nameMo": "橫琴隧道",
+          "href": "/pages/home/second-channel-news/index?pageId=hengqinChannelNews",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/hengqinsuidaozixun.png",
+          "isLocalDelete": false
+        }
+      ]
+    },
+    {
+      "id": "TransportInMacau",
+      "name": "澳门交通",
+      "nameMo": "澳門交通",
+      "isLocalDelete": false,
+      "hidden": false,
+      "entryList": [
+        {
+          "id": "AOMENCHUXING",
+          "name": "澳门出行",
+          "nameMo": "澳門出行",
+          "href": "/pages/index/index?name=澳门出行",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/aomenchuxing.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "BAOSHIBAOZHAN",
+          "hidden": false,
+          "name": "巴士报站",
+          "nameMo": "巴士報站",
+          "href": "wxapp://wx0ccdff58e44da343/pages/index/index",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/bashibaozhan.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "BASHIDIANDUIDIAN",
+          "name": "巴士点对点",
+          "nameMo": "巴士點對點",
+          "href": "https://bis.dsat.gov.mo/pointToPoint/pointToPoint.html?language=zh_cn",
+          "hrefHant": "https://bis.dsat.gov.mo/pointToPoint/pointToPoint.html?language=zh_tw",
+          "hrefPt": "https://bis.dsat.gov.mo/pointToPoint/pointToPoint.html?language=pt",
+          "hrefEn": "https://bis.dsat.gov.mo/pointToPoint/pointToPoint.html?language=en",
+          "hrefHans": "https://bis.dsat.gov.mo/pointToPoint/pointToPoint.html?language=zh_cn",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/bashidianduidian.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "KUAJINGCHUZUCHE",
+          "name": "跨境出租车",
+          "nameMo": "跨境出租車",
+          "hrefHant": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=tc",
+          "hrefPt": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=pt",
+          "hrefEn": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=en",
+          "hrefHans": "https://www.dsat.gov.mo/hzmb/taxi_cross.aspx?lang=sc",
+          "href": "pages/home/cross-taxi/index",
+          "hrefHant": "pages/home/cross-taxi/index",
+          "hrefPt": "pages/home/cross-taxi/index",
+          "hrefEn": "pages/home/cross-taxi/index",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/kuajingchuzuche.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "HANGBAN",
+          "name": "航班",
+          "nameMo": "航班",
+          "hrefHant": "https://dis.dsat.gov.mo:8017/flight?lang=zh-hant",
+          "hrefPt": "https://dis.dsat.gov.mo:8017/flight?lang=pt",
+          "hrefEn": "https://dis.dsat.gov.mo:8017/flight?lang=en",
+          "hrefHans": "https://dis.dsat.gov.mo:8017/flight?lang=zh-hans",
+          "href": "/pages/index/index?name=航班",
+          "hrefHant": "/pages/index/index?name=航班",
+          "hrefPt": "/pages/index/index?name=航班",
+          "hrefEn": "/pages/index/index?name=航班",
+          "hrefHans": "/pages/index/index?name=航班",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/hangban.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "CHUANGBAN",
+          "name": "船班",
+          "nameMo": "船班",
+          "href": "https://dis.dsat.gov.mo:8017/ferry?lang=zh-hans",
+          "hrefHant": "https://dis.dsat.gov.mo:8017/ferry?lang=zh-hant",
+          "hrefPt": "https://dis.dsat.gov.mo:8017/ferry?lang=pt",
+          "hrefEn": "https://dis.dsat.gov.mo:8017/ferry?lang=en",
+          "hrefHans": "https://dis.dsat.gov.mo:8017/ferry?lang=zh-hans",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/chuangban.png",
+          "href": "/pages/index/index?name=船班",
+          "hrefHant": "/pages/index/index?name=船班",
+          "hrefPt": "/pages/index/index?name=船班",
+          "hrefEn": "/pages/index/index?name=船班",
+          "hrefHans": "/pages/index/index?name=船班",
+          "isLocalDelete": false
+        },
+        {
+          "id": "JINBA",
+          "name": "金巴",
+          "nameMo": "金巴",
+          "href": "https://dis.dsat.gov.mo:8017/hzmbus?lang=zh-hans",
+          "hrefHant": "https://dis.dsat.gov.mo:8017/hzmbus?lang=zh-hant",
+          "hrefPt": "https://dis.dsat.gov.mo:8017/hzmbus?lang=pt",
+          "hrefEn": "https://dis.dsat.gov.mo:8017/hzmbus?lang=en",
+          "hrefHans": "https://dis.dsat.gov.mo:8017/hzmbus?lang=zh-hans",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/jinba.png",
+          "href": "/pages/index/index?name=金巴",
+          "hrefHant": "/pages/index/index?name=金巴",
+          "hrefPt": "/pages/index/index?name=金巴",
+          "hrefEn": "/pages/index/index?name=金巴",
+          "hrefHans": "/pages/index/index?name=金巴",
+          "isLocalDelete": false
+        },
+        {
+          "id": "CHUANSUOBASHI",
+          "hidden": true,
+          "name": "酒店娱乐场\n穿梭巴士",
+          "nameMo": "酒店娛樂場\n穿梭巴士",
+          "href": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=zh-hans",
+          "hrefHant": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=zh-hant",
+          "hrefPt": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=pt",
+          "hrefEn": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=en",
+          "hrefHans": "https://dis.dsat.gov.mo:8017/shuttlebus?lang=zh-hans",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/chuansuobashi.png",
+          "href": "/pages/home/hotel-bus/index",
+          "hrefHant": "/pages/home/hotel-bus/index",
+          "hrefPt": "/pages/home/hotel-bus/index",
+          "hrefEn": "/pages/home/hotel-bus/index",
+          "hrefHans": "/pages/home/hotel-bus/index",
+          "isLocalDelete": false
+        }
+      ]
+    },
+    {
+      "id": "Other",
+      "name": "其他",
+      "nameMo": "其他",
+      "isLocalDelete": false,
+      "entryList": [
+        {
+          "id": "YIJIANFANKUI",
+          "name": "意见反馈",
+          "nameMo": "意見反饋",
+          "href": "/pages/map/feedback/index",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/yijianfankui.png",
+          "isLocalDelete": false
+        },
+        {
+          "id": "AOMENHUODONGWANG",
+          "name": "澳门活动网",
+          "nameMo": "澳門活動網",
+          "href": "https://www.enjoymacao.mo/zh-hans/app/list",
+          "hrefHant": "https://www.enjoymacao.mo/zh/app/list",
+          "hrefPt": "https://www.enjoymacao.mo/pt/app/list",
+          "hrefEn": "https://www.enjoymacao.mo/en/app/list",
+          "hrefHans": "https://www.enjoymacao.mo/zh-hans/app/list",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/aomenhuodongwang.png",
+          "isLocalDelete": false,
+          "hidden": true
+        },
+        {
+          "id": "PRIVACYPOLICY",
+          "name": "隐私协议",
+          "nameMo": "隱私協議",
+          "href": "https://hqcx.hengqin.gov.cn/privacy-policy.html",
+          "icon": "https://hqcx.hengqin.gov.cn/static/home/privacy.svg",
+          "isLocalDelete": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+/* App generic styles */
+.app {
+  min-height: 100vh;
+}
+
+.main-content {
+  min-height: 100vh;
+}
+
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: #6b7280;
+}

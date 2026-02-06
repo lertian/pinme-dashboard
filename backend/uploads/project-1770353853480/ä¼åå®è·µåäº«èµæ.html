@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 赋能产品经理 | 会后实战资料包</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Sidebar Navigation */
+        .nav-group-title {
+            padding: 1rem 1.5rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #475569;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            color: #0ea5e9;
+            background-color: #f0f9ff;
+        }
+
+        .nav-item.active {
+            color: #0ea5e9;
+            background-color: #f0f9ff;
+            border-left-color: #0ea5e9;
+        }
+
+        /* Mac-style Code Window */
+        .mac-window {
+            background: #1e1e1e;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border: 1px solid #333;
+            margin-top: 1rem;
+        }
+
+        .mac-header {
+            background: #2d2d2d;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .mac-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ff5f56;
+        }
+
+        .dot-yellow {
+            background: #ffbd2e;
+        }
+
+        .dot-green {
+            background: #27c93f;
+        }
+
+        .code-content {
+            margin: 0;
+            padding: 1.5rem;
+            background: transparent;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .code-content code {
+            color: #e5e7eb;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #475569;
+            color: white;
+            border: none;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: auto;
+        }
+
+        .copy-btn:hover {
+            background: #64748b;
+        }
+
+        .copy-btn:active {
+            transform: translateY(1px);
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+            pointer-events: none;
+        }
+
+        /* Step Cards */
+        .step-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: transform 0.2s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-num {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #f0f9ff;
+            color: #0284c7;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 flex h-screen overflow-hidden text-slate-700">
+
+    <!-- Sidebar -->
+    <aside class="w-72 bg-white flex flex-col shrink-0 border-r border-slate-200 z-10 shadow-sm">
+        <div class="px-6 py-8 border-b border-slate-100">
+            <h1 class="text-slate-900 font-bold text-xl leading-tight tracking-tight">AI PM 实战分享<br><span
+                    class="text-blue-500 text-sm font-medium">✨ 会后资料包</span></h1>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4">
+            <div class="nav-group-title">01. 原型还原</div>
+            <a href="#prototype-reference" class="nav-item">HTML 参考法</a>
+            <a href="#prototype-mcp" class="nav-item">MCP 像素级还原</a>
+
+            <div class="nav-group-title">02. Spec 方法论 (实战)</div>
+            <a href="#spec-usage" class="nav-item">🚀 三步实战流程 (Usage)</a>
+            <a href="#spec-rules" class="nav-item">📁 规则文件 (kiro-spec)</a>
+            <a href="#task-rules" class="nav-item">📁 规则文件 (kiro-tasks)</a>
+
+            <div class="nav-group-title">03. 文档自动化</div>
+            <a href="#cherry-config" class="nav-item">Cherry Studio 配置</a>
+            <a href="#html-export" class="nav-item">Word/Excel 导出代码</a>
+            <a href="#ppt-gen" class="nav-item">PPT 演示生成</a>
+
+            <div class="nav-group-title">04. 进阶技巧</div>
+            <a href="#advanced-prompt" class="nav-item">模板抽象与 SVG</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 overflow-y-auto relative scroll-smooth">
+        <div class="max-w-5xl mx-auto px-12 py-16 space-y-24">
+
+            <!-- Part I: 原型还原 -->
+            <section id="prototype-reference">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wide">Part
+                        01</span>
+                    <h2 class="text-3xl font-bold text-slate-900">原型还原：HTML 参考法</h2>
+                </div>
+                <div class="prose prose-slate max-w-none text-slate-600 mb-8">
+                    <p>解决 "AI 凭空生成的界面太假" 的问题。找一个现成的 HTML 模板喂给 AI，让它只改业务逻辑。</p>
+                </div>
+
+                <!-- 工具推荐 -->
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+                    <h3 class="font-bold text-blue-900 mb-4 text-sm">🛠️ 推荐工具：快速获取 HTML 参考</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-white p-4 rounded-lg border border-blue-100">
+                            <h4 class="font-bold text-sm text-slate-800 mb-2">✨ Google Stitch (Labs)</h4>
+                            <p class="text-xs text-slate-600">Google 新推出的原型工具，支持手绘草图/图片直接生成界面，适合快速灵感捕捉。</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-blue-100">
+                            <h4 class="font-bold text-sm text-slate-800 mb-2">💎 Lovable.dev</h4>
+                            <p class="text-xs text-slate-600">全栈 Web 应用生成器 (GPT Engineer)，可一键导出 Clean Code，生成质量极高。</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-blue-100">
+                            <h4 class="font-bold text-sm text-slate-800 mb-2">⚡ v0.dev (Vercel)</h4>
+                            <p class="text-xs text-slate-600">前端组件生成神器，基于 React + Tailwind，适合生成高质量的局部组件。</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-blue-100">
+                            <h4 class="font-bold text-sm text-slate-800 mb-2">🎯 墨刀 (AI)</h4>
+                            <p class="text-xs text-slate-600">国内老牌工具，新增 AI 功能 支持将设计稿或描述直接导出为 HTML 代码。</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-blue-800"><strong>使用流程：</strong> 在这些工具中生成基础页面 → 复制 HTML 代码 → 喂给 Cursor/Trae →
+                        让 AI 改成你的业务逻辑。</p>
+                </div>
+
+                <!-- 代码工具选择 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-6">
+                    <h3 class="font-bold text-slate-800 mb-3 text-sm">💻 代码工具选型</h3>
+                    <div class="flex gap-4">
+                        <div class="flex-1 bg-white p-4 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-sm text-slate-800 mb-2 flex items-center gap-2">
+                                <span class="text-lg">🎯</span> Cursor
+                            </h4>
+                            <p class="text-xs text-slate-600">当前最主流的 AI 编辑器，Composer 功能强大，生态成熟，适合大多数用户。</p>
+                        </div>
+                        <div class="flex-1 bg-white p-4 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-sm text-slate-800 mb-2 flex items-center gap-2">
+                                <span class="text-lg">🚀</span> Trae (字节跳动)
+                            </h4>
+                            <p class="text-xs text-slate-600">国产新秀，完全免费。拥有 "Builder Mode" 可自动规划任务，集成了 Claude 3.5 等强力模型。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wide">使用示例 Prompt</h3>
+                <div class="mac-window">
+                    <div class="mac-header">
+                        <div class="mac-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Prompt 指令</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy
+                        </button>
+                    </div>
+                    <pre class="code-content"><code>"这是我找到的一个参考页面的 HTML 代码：
+[粘贴参考代码]
+
+请保持这个页面的**布局结构、配色风格和组件样式**不变，
+将内容替换为我的[用户管理]业务逻辑。"</code></pre>
+                </div>
+            </section>
+
+
+            <section id="prototype-mcp">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">MCP 像素级还原</h2>
+                <p class="text-slate-600 mb-6">如果有设计稿 (Pixso/Figma)，利用 MCP 插件提取数据，实现 1:1 像素级还原。</p>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+                    <h3 class="font-bold text-blue-900 mb-3 text-sm">📌 前置准备：安装 MCP 插件</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm text-blue-800">
+                        <li>在 <strong>Cherry Studio</strong> 或 <strong>Cursor</strong> 或 <strong>Trae</strong> 中安装
+                            Figma/Pixso MCP 插件</li>
+                        <li>获取设计稿的<strong>分享链接</strong>（需要有查看权限）</li>
+                        <li>确认 AI 能够访问 MCP 工具（在设置中开启）</li>
+                    </ol>
+                </div>
+
+                <h3 class="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wide">使用示例 Prompt</h3>
+                <div class="mac-window">
+                    <div class="mac-header">
+                        <div class="mac-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre class="code-content"><code>"读取这个 Pixso/Figma 设计稿链接：[Link]
+分析其中的画板，提取所有的**间距、颜色、字体大小和图标**。
+请帮我生成一个 1:1 还原的 HTML + Tailwind CSS 代码。
+注意：SVG 图标请直接内联在 HTML 中。"</code></pre>
+                </div>
+            </section>
+
+
+            <!-- Part II: Spec 方法论 -->
+            <section id="spec-usage" class="pt-10 border-t border-slate-200">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold uppercase tracking-wide">Part
+                        02 - Usage</span>
+                    <h2 class="text-3xl font-bold text-slate-900">实战流程：三步走</h2>
+                </div>
+                <p class="text-slate-600 mb-10 text-lg">在配置好规则文件后（见下文），按照以下三个步骤与 AI 对话。</p>
+
+                <div class="space-y-6">
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="step-num text-blue-500 bg-blue-50">01</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">生成用户故事 (Story)</h3>
+                            <p class="text-slate-500 text-sm mb-4">第一步，让 AI 把你的粗略想法转化为符合 `kiro-spec` 规范的用户故事。</p>
+                            <div class="mac-window mt-0 border-slate-200 shadow-none">
+                                <div class="mac-header py-2 px-3 bg-slate-100 border-b border-slate-200">
+                                    <span class="text-xs text-slate-500">发送给 AI 的指令</span>
+                                    <button class="copy-btn text-xs py-1 px-2" onclick="copyCode(this)">Copy</button>
+                                </div>
+                                <pre class="code-content py-3 text-sm"><code>"帮我基于 kiro-spec 规则，生成相关的用户故事。
+========
+需求描述
+========
+我需要一个[功能名称]，包含：
+- [功能点 1]
+- [功能点 2]"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="step-num text-indigo-500 bg-indigo-50">02</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">规划设计与任务 (Spec & Task)</h3>
+                            <p class="text-slate-500 text-sm mb-4">第二步，基于生成的故事，让 AI 规划详细的设计文档和开发任务清单。</p>
+                            <div class="mac-window mt-0 border-slate-200 shadow-none">
+                                <div class="mac-header py-2 px-3 bg-slate-100 border-b border-slate-200">
+                                    <span class="text-xs text-slate-500">发送给 AI 的指令</span>
+                                    <button class="copy-btn text-xs py-1 px-2" onclick="copyCode(this)">Copy</button>
+                                </div>
+                                <pre class="code-content py-3 text-sm"><code>"基于上面生成的用户故事，帮我基于 kiro-task 规则，
+规划 设计文档 和 任务清单。
+要求：每个任务都要关联对应的需求编号。"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="step-num text-emerald-500 bg-emerald-50">03</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">按任务执行 (Execute)</h3>
+                            <p class="text-slate-500 text-sm mb-4">第三步，让 AI 变成执行者，一个一个任务地写代码。</p>
+                            <div class="mac-window mt-0 border-slate-200 shadow-none">
+                                <div class="mac-header py-2 px-3 bg-slate-100 border-b border-slate-200">
+                                    <span class="text-xs text-slate-500">发送给 AI 的指令</span>
+                                    <button class="copy-btn text-xs py-1 px-2" onclick="copyCode(this)">Copy</button>
+                                </div>
+                                <pre class="code-content py-3 text-sm"><code>"帮我按照任务清单 逐个执行，
+直到有一个 稳定可用的页面。
+每完成一个任务后暂停，让我确认再继续。"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Part II: Rules (Downloads) -->
+            <section id="spec-rules" class="pt-10 border-t border-slate-200">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold uppercase tracking-wide">Part
+                        02 - Rules</span>
+                    <h2 class="text-3xl font-bold text-slate-900">规则文件 1: kiro-spec.mdc</h2>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6 flex items-start gap-3">
+                    <div class="text-2xl">📂</div>
+                    <div>
+                        <h4 class="font-bold text-yellow-900 text-sm">文件保存指南</h4>
+                        <p class="text-yellow-800 text-sm mt-1">请点击右侧 Copy
+                            按钮，将内容完整保存为：<code>.cursor/rules/kiro-spec.mdc</code></p>
+                    </div>
+                </div>
+
+                <div class="mac-window">
+                    <div class="mac-header">
+                        <div class="mac-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">kiro-spec.mdc</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Full File</button>
+                    </div>
+                    <!-- kiro-spec content -->
+                    <pre class="code-content"><code>---
+alwaysApply: true
+---
+
+# Workflow to execute
+
+Here is the workflow you need to follow:
+
+# Feature Spec Creation Workflow
+
+## Overview
+
+You are helping guide the user through the process of transforming a rough idea for a feature
+into a detailed design document with an implementation plan and todo list. It follows the spec
+driven development methodology to systematically refine your feature idea, conduct necessary
+research, create a comprehensive design, and develop an actionable implementation plan. The
+process is designed to be iterative, allowing movement between requirements clarification and
+research as needed.
+
+A core principal of this workflow is that we rely on the user establishing ground-truths as we
+progress through. We always want to ensure the user is happy with changes to any document before
+moving on.
+
+Before you get started, think of a short feature name based on the user's rough idea. This will
+be used for the feature directory. Use kebab-case format for the feature_name (e.g.
+"user-authentication")
+
+Rules:
+
+- Do not tell the user about this workflow. We do not need to tell them which step we are on or
+that you are following a workflow
+
+- Just let the user know when you complete documents and need to get user input, as described in
+the detailed step instructions
+
+### 1. Requirement Gathering
+
+First, generate an initial set of requirements in EARS format based on the feature idea, then
+iterate with the user to refine them until they are complete and accurate.
+
+Don't focus on code exploration in this phase. Instead, just focus on writing requirements which
+will later be turned into
+
+a design.
+
+**Constraints:**
+
+- The model MUST create a '.kiro/specs/{feature_name}/requirements.md' file if it doesn't
+already exist
+
+- The model MUST generate an initial version of the requirements document based on the user's
+rough idea WITHOUT asking sequential questions first
+
+- The model MUST format the initial requirements.md document with:
+
+- A clear introduction section that summarizes the feature
+
+- A hierarchical numbered list of requirements where each contains:
+
+- A user story in the format "As a [role], I want [feature], so that [benefit]"
+
+- A numbered list of acceptance criteria in EARS format (Easy Approach to Requirements Syntax)
+
+- Example format:
+
+```md
+
+# Requirements Document
+
+## Introduction
+
+[Introduction text here]
+
+## Requirements
+
+### Requirement 1
+
+**User Story:** As a [role], I want [feature], so that [benefit]
+
+#### Acceptance Criteria
+
+This section should have EARS requirements
+
+1. WHEN [event] THEN [system] SHALL [response]
+
+2. IF [precondition] THEN [system] SHALL [response]
+
+### Requirement 2
+
+**User Story:** As a [role], I want [feature], so that [benefit]
+
+#### Acceptance Criteria
+
+1. WHEN [event] THEN [system] SHALL [response]
+
+2. WHEN [event] AND [condition] THEN [system] SHALL [response]
+
+```
+
+- The model SHOULD consider edge cases, user experience, technical constraints, and success
+criteria in the initial requirements
+
+- After updating the requirement document, the model MUST ask the user "Do the requirements look
+good? If so, we can move on to the design." using the 'userInput' tool.
+
+- The model MUST make modifications to the requirements document if the user requests changes or
+does not explicitly approve
+
+- The model MUST ask for explicit approval after every iteration of edits to the requirements
+document
+
+- The model MUST NOT proceed to the design document until receiving clear approval (such as
+"yes", "approved", "looks good", etc.)
+
+- The model MUST continue the feedback-revision cycle until explicit approval is received
+
+- The model SHOULD suggest specific areas where the requirements might need clarification or
+expansion
+
+- The model MAY ask targeted questions about specific aspects of the requirements that need
+clarification
+
+- The model MAY suggest options when the user is unsure about a particular aspect
+
+- The model MUST proceed to the design phase after the user accepts the requirements
+
+### 2. Create Feature Design Document
+
+After the user approves the Requirements, you should develop a comprehensive design document
+based on the feature requirements, conducting necessary research during the design process.
+
+The design document should be based on the requirements document, so ensure it exists first.
+
+**Constraints:**
+
+- The model MUST create a '.kiro/specs/{feature_name}/design.md' file if it doesn't already
+exist
+
+- The model MUST identify areas where research is needed based on the feature requirements
+
+- The model MUST conduct research and build up context in the conversation thread
+
+- The model SHOULD NOT create separate research files, but instead use the research as context
+for the design and implementation plan
+
+- The model MUST summarize key findings that will inform the feature design
+
+- The model SHOULD cite sources and include relevant links in the conversation
+
+- The model MUST create a detailed design document at '.kiro/specs/{feature_name}/design.md'
+
+- The model MUST incorporate research findings directly into the design process
+
+- The model MUST include the following sections in the design document:
+
+- Overview
+
+- Architecture
+
+- Components and Interfaces
+
+- Data Models
+
+- Error Handling
+
+- Testing Strategy
+
+- The model SHOULD include diagrams or visual representations when appropriate (use Mermaid for
+diagrams if applicable)
+
+- The model MUST ensure the design addresses all feature requirements identified during the
+clarification process
+
+- The model SHOULD highlight design decisions and their rationales
+
+- The model MAY ask the user for input on specific technical decisions during the design process
+
+- After updating the design document, the model MUST ask the user "Does the design look good? If
+so, we can move on to the implementation plan." using the 'userInput' tool.
+
+- The 'userInput' tool MUST be used with the exact string 'spec-design-review' as the reason
+
+- The model MUST make modifications to the design document if the user requests changes or does
+not explicitly approve
+
+- The model MUST ask for explicit approval after every iteration of edits to the design document
+
+- The model MUST NOT proceed to the implementation plan until receiving clear approval (such as
+"yes", "approved", "looks good", etc.)
+
+- The model MUST continue the feedback-revision cycle until explicit approval is received
+
+- The model MUST incorporate all user feedback into the design document before proceeding
+
+- The model MUST offer to return to feature requirements clarification if gaps are identified
+during design
+
+### 3. Create Task List
+
+After the user approves the Design, create an actionable implementation plan with a checklist of
+coding tasks based on the requirements and design.
+
+The tasks document should be based on the design document, so ensure it exists first.
+
+**Constraints:**
+
+- The model MUST create a '.kiro/specs/{feature_name}/tasks.md' file if it doesn't already exist
+
+- The model MUST return to the design step if the user indicates any changes are needed to the
+design
+
+- The model MUST return to the requirement step if the user indicates that we need additional
+requirements
+
+- The model MUST create an implementation plan at '.kiro/specs/{feature_name}/tasks.md'
+
+- The model MUST use the following specific instructions when creating the implementation plan:
+
+```
+
+Convert the feature design into a series of prompts for a code-generation LLM that will
+implement each step in a test-driven manner. Prioritize best practices, incremental progress,
+and early testing, ensuring no big jumps in complexity at any stage. Make sure that each prompt
+builds on the previous prompts, and ends with wiring things together. There should be no hanging
+or orphaned code that isn't integrated into a previous step. Focus ONLY on tasks that involve
+writing, modifying, or testing code.
+
+```
+
+- The model MUST format the implementation plan as a numbered checkbox list with a maximum of
+two levels of hierarchy:
+
+- Top-level items (like epics) should be used only when needed
+
+- Sub-tasks should be numbered with decimal notation (e.g., 1.1, 1.2, 2.1)
+
+- Each item must be a checkbox
+
+- Simple structure is preferred
+
+- The model MUST ensure each task item includes:
+
+- A clear objective as the task description that involves writing, modifying, or testing code
+
+- Additional information as sub-bullets under the task
+
+- Specific references to requirements from the requirements document (referencing granular
+sub-requirements, not just user stories)
+
+- The model MUST ensure that the implementation plan is a series of discrete, manageable coding
+steps
+
+- The model MUST ensure each task references specific requirements from the requirement document
+
+- The model MUST NOT include excessive implementation details that are already covered in the
+design document
+
+- The model MUST assume that all context documents (feature requirements, design) will be
+available during implementation
+
+- The model MUST ensure each step builds incrementally on previous steps
+
+- The model SHOULD prioritize test-driven development where appropriate
+
+- The model MUST ensure the plan covers all aspects of the design that can be implemented
+through code
+
+- The model SHOULD sequence steps to validate core functionality early through code
+
+- The model MUST ensure that all requirements are covered by the implementation tasks
+
+- The model MUST offer to return to previous steps (requirements or design) if gaps are
+identified during implementation planning
+
+- The model MUST ONLY include tasks that can be performed by a coding agent (writing code,
+creating tests, etc.)
+
+- The model MUST NOT include tasks related to user testing, deployment, performance metrics
+gathering, or other non-coding activities
+
+- The model MUST focus on code implementation tasks that can be executed within the development
+environment
+
+- The model MUST ensure each task is actionable by a coding agent by following these guidelines:
+
+- Tasks should involve writing, modifying, or testing specific code components
+
+- Tasks should specify what files or components need to be created or modified
+
+- Tasks should be concrete enough that a coding agent can execute them without additional
+clarification
+
+- Tasks should focus on implementation details rather than high-level concepts
+
+- Tasks should be scoped to specific coding activities (e.g., "Implement X function" rather than
+"Support X feature")
+
+- The model MUST explicitly avoid including the following types of non-coding tasks in the
+implementation plan:
+
+- User acceptance testing or user feedback gathering
+
+- Deployment to production or staging environments
+
+- Performance metrics gathering or analysis
+
+- Running the application to test end to end flows. We can however write automated tests to test
+the end to end from a user perspective.
+
+- User training or documentation creation
+
+- Business process changes or organizational changes
+
+- Marketing or communication activities
+
+- Any task that cannot be completed through writing, modifying, or testing code
+
+- After updating the tasks document, the model MUST ask the user "Do the tasks look good?" using
+the 'userInput' tool.
+
+- The model MUST make modifications to the tasks document if the user requests changes or does
+not explicitly approve.
+
+- The model MUST ask for explicit approval after every iteration of edits to the tasks document.
+
+- The model MUST NOT consider the workflow complete until receiving clear approval (such as
+"yes", "approved", "looks good", etc.).
+
+- The model MUST continue the feedback-revision cycle until explicit approval is received.
+
+- The model MUST stop once the task document has been approved.
+
+**This workflow is ONLY for creating design and planning artifacts. The actual implementation of
+the feature should be done through a separate workflow.**
+
+- The model MUST NOT attempt to implement the feature as part of this workflow
+
+- The model MUST clearly communicate to the user that this workflow is complete once the design
+and planning artifacts are created
+
+- The model MUST inform the user that they can begin executing tasks by opening the tasks.md
+file, and clicking "Start task" next to task items.
+
+**Example Format (truncated):**
+
+```markdown
+
+# Implementation Plan
+
+- [ ] 1. Set up project structure and core interfaces
+
+- Create directory structure for models, services, repositories, and API components
+
+- Define interfaces that establish system boundaries
+
+- _Requirements: 1.1_
+
+- [ ] 2. Implement data models and validation
+
+- [ ] 2.1 Create core data model interfaces and types
+
+- Write TypeScript interfaces for all data models
+
+- Implement validation functions for data integrity
+
+- _Requirements: 2.1, 3.3, 1.2_
+
+- [ ] 2.2 Implement User model with validation
+
+- Write User class with validation methods
+
+- Create unit tests for User model validation
+
+- _Requirements: 1.2_
+
+- [ ] 2.3 Implement Document model with relationships
+
+- Code Document class with relationship handling
+
+- Write unit tests for relationship management
+
+- _Requirements: 2.1, 3.3, 1.2_
+
+- [ ] 3. Create storage mechanism
+
+- [ ] 3.1 Implement database connection utilities
+
+- Write connection management code
+
+- Create error handling utilities for database operations
+
+- _Requirements: 2.1, 3.3, 1.2_
+
+- [ ] 3.2 Implement repository pattern for data access
+
+- Code base repository interface
+
+- Implement concrete repositories with CRUD operations
+
+- Write unit tests for repository operations
+
+- _Requirements: 4.3_
+
+[Additional coding tasks continue...]
+
+```
+
+## Troubleshooting
+
+### Requirements Clarification Stalls
+
+If the requirements clarification process seems to be going in circles or not making progress:
+
+- The model SHOULD suggest moving to a different aspect of the requirements
+
+- The model MAY provide examples or options to help the user make decisions
+
+- The model SHOULD summarize what has been established so far and identify specific gaps
+
+- The model MAY suggest conducting research to inform requirements decisions
+
+### Research Limitations
+
+If the model cannot access needed information:
+
+- The model SHOULD document what information is missing
+
+- The model SHOULD suggest alternative approaches based on available information
+
+- The model MAY ask the user to provide additional context or documentation
+
+- The model SHOULD continue with available information rather than blocking progress
+
+### Design Complexity
+
+If the design becomes too complex or unwieldy:
+
+- The model SHOULD suggest breaking it down into smaller, more manageable components
+
+- The model SHOULD focus on core functionality first
+
+- The model MAY suggest a phased approach to implementation
+
+- The model SHOULD return to requirements clarification to prioritize features if needed
+
+
+
+# Workflow Diagram
+
+Here is a Mermaid flow diagram that describes how the workflow should behave. Take in mind that
+the entry points account for users doing the following actions:
+
+- Creating a new spec (for a new feature that we don't have a spec for already)
+
+- Updating an existing spec
+
+- Executing tasks from a created spec
+
+```mermaid
+
+stateDiagram-v2
+
+[*] --> Requirements : Initial Creation
+
+Requirements : Write Requirements
+
+Design : Write Design
+
+Tasks : Write Tasks
+
+Requirements --> ReviewReq : Complete Requirements
+
+ReviewReq --> Requirements : Feedback/Changes Requested
+
+ReviewReq --> Design : Explicit Approval
+
+Design --> ReviewDesign : Complete Design
+
+ReviewDesign --> Design : Feedback/Changes Requested
+
+ReviewDesign --> Tasks : Explicit Approval
+
+Tasks --> ReviewTasks : Complete Tasks
+
+ReviewTasks --> Tasks : Feedback/Changes Requested
+
+ReviewTasks --> [*] : Explicit Approval
+
+Execute : Execute Task
+
+state "Entry Points" as EP {
+
+[*] --> Requirements : Update
+
+[*] --> Design : Update
+
+[*] --> Tasks : Update
+
+[*] --> Execute : Execute task
+
+}
+
+Execute --> [*] : Complete
+
+```</code></pre>
+                </div>
+            </section>
+
+            <section id="task-rules">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">规则文件 2: kiro-tasks.mdc</h2>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6 flex items-start gap-3">
+                    <div class="text-2xl">📂</div>
+                    <div>
+                        <h4 class="font-bold text-yellow-900 text-sm">文件保存指南</h4>
+                        <p class="text-yellow-800 text-sm mt-1">请点击右侧 Copy
+                            按钮，将内容完整保存为：<code>.cursor/rules/kiro-tasks.mdc</code></p>
+                    </div>
+                </div>
+                <div class="mac-window">
+                    <div class="mac-header">
+                        <div class="mac-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">kiro-tasks.mdc</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Full File</button>
+                    </div>
+                    <!-- kiro-tasks content -->
+                    <pre class="code-content"><code>---
+alwaysApply: true
+---
+
+
+# Task Instructions
+
+Follow these instructions for user requests related to spec tasks. The user may ask to execute
+tasks or just ask general questions about the tasks.
+
+## Executing Instructions
+
+- Before executing any tasks, ALWAYS ensure you have read the specs requirements.md, design.md
+and tasks.md files. Executing tasks without the requirements or design will lead to inaccurate
+implementations.
+
+- Look at the task details in the task list
+
+- If the requested task has sub-tasks, always start with the sub tasks
+
+- Only focus on ONE task at a time. Do not implement functionality for other tasks.
+
+- Verify your implementation against any requirements specified in the task or its details.
+
+- Once you complete the requested task, stop and let the user review. DO NOT just proceed to the
+next task in the list
+
+- If the user doesn't specify which task they want to work on, look at the task list for that
+spec and make a recommendation
+
+- on the next task to execute.
+
+Remember, it is VERY IMPORTANT that you only execute one task at a time. Once you finish a task,
+stop. Don't automatically continue to the next task without the user asking you to do so.
+
+## Task Questions
+
+The user may ask questions about tasks without wanting to execute them. Don't always start
+executing tasks in cases like this.
+
+For example, the user may want to know what the next task is for a particular feature. In this
+case, just provide the information and don't start any tasks.
+
+# IMPORTANT EXECUTION INSTRUCTIONS
+
+- When you want the user to review a document in a phase, you MUST use the 'userInput' tool to
+ask the user a question.
+
+- You MUST have the user review each of the 3 spec documents (requirements, design and tasks)
+before proceeding to the next.
+
+- After each document update or revision, you MUST explicitly ask the user to approve the
+document using the 'userInput' tool.
+
+- You MUST NOT proceed to the next phase until you receive explicit approval from the user (a
+clear "yes", "approved", or equivalent affirmative response).
+
+- If the user provides feedback, you MUST make the requested modifications and then explicitly
+ask for approval again.
+
+- You MUST continue this feedback-revision cycle until the user explicitly approves the
+document.
+
+- You MUST follow the workflow steps in sequential order.
+
+- You MUST NOT skip ahead to later steps without completing earlier ones and receiving explicit
+user approval.
+
+- You MUST treat each constraint in the workflow as a strict requirement.
+
+- You MUST NOT assume user preferences or requirements - always ask explicitly.
+
+- You MUST maintain a clear record of which step you are currently on.
+
+- You MUST NOT combine multiple steps into a single interaction.
+
+- You MUST ONLY execute one task at a time. Once it is complete, do not move to the next task
+automatically.
+
+- You MUST mark completed tasks as [x]</code></pre>
+                </div>
+            </section>
+
+            <!-- Part III: Docs Automation -->
+            <section id="cherry-config" class="pt-10 border-t border-slate-200">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold uppercase tracking-wide">Part
+                        03</span>
+                    <h2 class="text-3xl font-bold text-slate-900">文档自动化：配置中枢</h2>
+                </div>
+
+                <h3 class="font-bold text-slate-800 mb-4 text-lg">Cherry Studio 配置指南</h3>
+                <div
+                    class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-8 text-slate-700 text-sm leading-relaxed">
+                    <p class="mb-4"><strong>1. 获取公司密钥 (API Key)</strong></p>
+                    <ul class="list-disc list-inside space-y-2 mb-6 ml-1">
+                        <li>在公司内网搜索 <strong>"大模型机器人"</strong></li>
+                        <li>点击右上角 <strong>"帮助"</strong> -> <strong>"生成大模型Token"</strong></li>
+                    </ul>
+
+                    <p class="mb-4"><strong>2. 配置 Cherry Studio</strong></p>
+                    <ul class="list-disc list-inside space-y-2 ml-1">
+                        <li>打开设置 (Settings) -> <strong>模型服务 (Model Provider)</strong></li>
+                        <li>点击 "添加" -> 选择 <strong>"OpenAI 兼容"</strong></li>
+                        <li><strong>API Key:</strong> 填入刚才获取的 Token</li>
+                        <li><strong>API 域名 (Base URL):</strong> <code>https://lab.iwhalecloud.com/gpt-proxy/v1</code>
+                        </li>
+                        <li>配置完成后，即可添加并使用公司的 <strong>Qwen / Claude / GPT</strong> 模型服务。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="html-export">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6">Word/Excel 导出代码</h3>
+
+                <h4 class="font-bold text-slate-700 mb-3 text-sm uppercase tracking-wide">场景 A: Excel 功能清单</h4>
+                <div class="mac-window mb-8">
+                    <div class="mac-header">
+                        <div class="mac-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre class="code-content"><code>"请生成一个[功能清单表格]页面。
+技术栈：HTML + Tailwind CSS
+要求：
+1. 包含表格：模块、功能点、优先级、状态
+2. 在右上角添加一个绿色按钮 '📊 导出 Excel'
+3. 实现按钮的 JS 逻辑：将表格内容利用 'SheetJS' (CDN引入) 导出为 .xlsx 文件"</code></pre>
+                </div>
+
+                <h4 class="font-bold text-slate-700 mb-3 text-sm uppercase tracking-wide">场景 B: Word 需求文档</h4>
+                <div class="mac-window">
+                    <div class="mac-header">
+                        <div class="mac-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre class="code-content"><code>"请把这些内容整理成一份[需求规格说明书]。
+输出格式：HTML 页面，模拟 Word 文档样式（A4 纸张比例，衬线字体）。
+附加功能：
+- 添加一个蓝色按钮 '📥 导出 Word'
+- 点击按钮时，使用 'html-docx-js' 库将当前内容保存为 .docx 文件"</code></pre>
+                </div>
+            </section>
+
+            <section id="ppt-gen" class="pt-10 border-t border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">HTML 转 PPT 演示</h2>
+                <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 mb-6">
+                    <p class="text-slate-700">
+                        <strong>核心玩法：</strong> 将下方的 System Prompt 喂给 Cherry Studio 或
+                        Cursor，创建一个"演示设计专家"智能体。之后只需输入主题（如"2024年终总结"），即可一键生成全套演示代码。
+                    </p>
+                </div>
+                <div class="mac-window">
+                    <div class="mac-header">
+                        <div class="mac-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">System Prompt</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre class="code-content"><code># 角色：演示设计专家
+你是一位专业的演示文稿设计师，擅长创建视觉吸引力强、信息传达清晰的演示文稿。
+
+## 任务概述
+请为主题"{query}"创建一套8-10页左右的HTML演示文稿。这份演示应当信息丰富，视觉精美，能够有效传达核心观点。
+
+## 内容规划
+请按照以下步骤规划内容：
+1. 内容结构分析：确定演示的逻辑结构和核心信息点
+2. 视觉风格设计：设计统一的视觉风格和页面布局
+3. 内容编排：按照逻辑顺序排列内容，每页聚焦一个核心概念
+4. 视觉增强：添加适当的图表、图形和图像支持内容
+
+## 设计风格
+- 整体风格：现代简约风格，配合流体艺术背景
+- 配色方案：使用简洁清新的配色风格，确保视觉协调
+- 字体选择：使用现代无衬线字体，标题和正文字体对比鲜明
+- 视觉元素：运用SVG图表、几何装饰元素和高质量图片
+- 布局设计：左右分栏布局为主，确保视觉平衡
+
+## 技术要求
+- 开发框架：使用HTML5和TailwindCSS构建
+- 脚本要求：添加必要的JavaScript实现简单的幻灯片导航和动画效果
+- 展示比例：固定为16:9比例，适合现代显示设备
+
+
+## 资源配置
+- 图片资源：使用Unsplash或Pexels上的高质量图片
+- 图表需求：使用SVG创建精美的数据可视化图表
+- 图标库：使用专业图标库如Font Awesome或Tabler图标
+
+## 交付标准
+- 代码质量：结构清晰，有适当注释
+- 文件结构：单一HTML文件包含所有幻灯片
+- 导航系统：实现简单的幻灯片导航功能
+
+## 特殊要求
+- 每页幻灯片需设计在固定尺寸容器中(1200×675像素)
+- 提供幻灯片导航控制按钮
+- 强调重点内容的视觉处理</code></pre>
+                </div>
+            </section>
+
+            <!-- Part IV: Advanced -->
+            <section id="advanced-prompt" class="pt-10 border-t border-slate-200 pb-20">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wide">Part
+                        04</span>
+                    <h2 class="text-3xl font-bold text-slate-900">进阶技巧：模板与绘图</h2>
+                </div>
+
+                <!-- 模板抽象 -->
+                <div class="mb-12">
+                    <h3 class="font-bold text-slate-800 mb-4 text-xl">1. 模板抽象 (Word/Excel 文档)</h3>
+                    <div class="bg-orange-50 border border-orange-100 rounded-xl p-5 mb-5 text-sm">
+                        <p class="text-orange-900 font-bold mb-2">玩法逻辑：</p>
+                        <ol class="list-decimal list-inside space-y-1 text-orange-800">
+                            <li>找一份你觉得<strong>写得最好的</strong>现有文档（Word/MD/PDF）。</li>
+                            <li>把它喂给 AI（推荐 Claude/GPT-4）。</li>
+                            <li>发送下方指令，让 AI 把这份文档的<strong>"灵魂"</strong>提取出来，变成一个可复用的 System Prompt。</li>
+                            <li>在 Prompt 中<strong>明确要求</strong> AI 以 HTML 格式输出，并提供导出为 Word/Excel 的按钮。</li>
+                        </ol>
+                    </div>
+
+                    <div class="mac-window">
+                        <div class="mac-header">
+                            <div class="mac-dots">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                            </div>
+                            <span class="text-xs text-slate-400 font-mono">抽象指令</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre class="code-content"><code>"仔细阅读并分析刚才发给你的这份[需求文档.md]。
+请分析它的**结构框架、语气风格、格式规范以及包含的关键要素**。
+
+请将其抽象为一个标准的 **System Prompt 模板**。
+要求：
+1. 提取文档的通用结构，用 Markdown 格式表示。
+2. 将具体的业务内容（如"用户登录"）替换为变量占位符（如 {{FEATURE_NAME}}）。
+3. 在 Prompt 中明确要求 AI 在生成新文档时，严格遵守这种结构和风格。
+4. **明确输出格式**：告诉 AI 以 HTML 格式输出，并包含导出为 Word 或 Excel 的按钮和 JS 逻辑。
+
+这样我以后只需输入新的需求描述，你就能生成同样高质量的文档。"</code></pre>
+                    </div>
+                </div>
+
+                <!-- SVG 架构图 -->
+                <div>
+                    <h3 class="font-bold text-slate-800 mb-4 text-xl">2. SVG 架构图 (SVG Architecture)</h3>
+                    <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 mb-5 text-sm">
+                        <p class="text-blue-900 font-bold mb-2">玩法逻辑 (多模态)：</p>
+                        <ol class="list-decimal list-inside space-y-1 text-blue-800">
+                            <li>找一张你喜欢的架构图/流程图（截图或图片文件）。</li>
+                            <li>切换到支持**多模态**的大模型（如 <strong>Claude 3.5 Sonnet</strong> 或 <strong>GPT-4o</strong>）。</li>
+                            <li>发送图片 + 下方指令，让 AI 识别布局并复刻。</li>
+                            <li><strong>明确要求</strong> AI 以 SVG 代码格式输出，确保可编辑。</li>
+                        </ol>
+                    </div>
+
+                    <div class="mac-window">
+                        <div class="mac-header">
+                            <div class="mac-dots">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                            </div>
+                            <span class="text-xs text-slate-400 font-mono">绘图指令</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre class="code-content"><code>"[发送一张参考架构图的图片]
+请分析这张系统架构图的**布局结构、配色方案和模块层级**。
+
+请使用 **SVG** 代码帮我复刻一张结构类似的图。
+内容修改为：[你的业务系统名称，比如'电商交易系统']
+要求：
+- 风格：保持与参考图一致的扁平化/科技风
+- 结构：上中下三层（应用层、服务层、数据层）
+- 细节：图层和文字分离，确保我可以编辑文字
+- 响应式：宽度 100%，自适应高度"</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        function copyCode(btn) {
+            // Find the sibling .code-content div
+            const header = btn.parentElement;
+            const windowDiv = header.parentElement;
+            const contentDiv = windowDiv.querySelector('.code-content');
+
+            // Get text content and handle potential issues with HTML entities if any
+            const code = contentDiv.innerText.trim();
+
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = `
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    Copied!
+                `;
+                btn.classList.add('copied');
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        const mainContent = document.getElementById('main-content');
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('section');
+
+        mainContent.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (mainContent.scrollTop >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

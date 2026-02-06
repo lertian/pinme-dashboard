@@ -1,0 +1,89 @@
+.main-header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.help-icon-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid #9ca3af;
+    background: transparent;
+    color: #9ca3af;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.2s;
+}
+
+.help-icon-btn:hover {
+    border-color: #4f46e5;
+    color: #4f46e5;
+    transform: scale(1.1);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: #374151;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #4f46e5;
+}
+
+.welcome-text {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+}
+
+.logout-btn:hover {
+    text-decoration: underline;
+}

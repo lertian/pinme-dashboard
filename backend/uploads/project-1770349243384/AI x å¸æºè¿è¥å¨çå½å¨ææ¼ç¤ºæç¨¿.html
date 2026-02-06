@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI × 司机运营全生命周期</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        --bg-color: #050608;
+        --bg-gradient: radial-gradient(circle at top, #1b2333 0, #050608 55%, #000 100%);
+        --accent: #f5f5f7;
+        --accent-soft: rgba(245, 245, 247, 0.7);
+        --accent-dim: rgba(245, 245, 247, 0.35);
+        --primary: #ffffff;
+        --highlight: #4b8afe;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, system-ui, -system-ui,
+          "SF Pro Text", "SF Pro Display", "PingFang SC", "Helvetica Neue",
+          Arial, sans-serif;
+        color: var(--primary);
+        background: var(--bg-gradient);
+        -webkit-font-smoothing: antialiased;
+        overflow: hidden;
+      }
+
+      .presentation {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7vh 9vw;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .slide.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide.prev {
+        transform: translateX(-100%);
+      }
+
+      .slide::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 15% 0,
+          rgba(91, 146, 255, 0.12),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+
+      .slide-inner {
+        position: relative;
+        max-width: 1100px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        column-gap: 4vw;
+        align-items: center;
+      }
+
+      @media (max-width: 900px) {
+        .slide-inner {
+          grid-template-columns: 1fr;
+          row-gap: 6vh;
+        }
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: rgba(15, 17, 23, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        color: var(--accent-soft);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .badge-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #4b8afe, #9f7aea);
+        box-shadow: 0 0 0 4px rgba(75, 138, 254, 0.18);
+      }
+
+      .title-block {
+        margin-top: 20px;
+      }
+
+      .title-main {
+        font-size: clamp(42px, 5vw, 56px);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.08;
+      }
+
+      .title-main.single-line {
+        white-space: nowrap;
+      }
+
+      .title-main span.subtle {
+        font-weight: 500;
+        color: var(--accent-soft);
+      }
+
+      .title-gradient {
+        background: linear-gradient(120deg, #f5f5f7 0%, #e5e7eb 35%, #9fb6ff 90%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .title-sub {
+        margin-top: 18px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--accent-soft);
+        max-width: 30em;
+      }
+
+      .title-sub strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .meta {
+        margin-top: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        font-size: 13px;
+        color: var(--accent-dim);
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .meta-label {
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 11px;
+      }
+
+      .meta-value {
+        color: var(--accent-soft);
+      }
+
+      .visual {
+        justify-self: flex-end;
+        max-width: 420px;
+        width: 100%;
+      }
+
+      .card {
+        position: relative;
+        min-height: 260px;
+        border-radius: 32px;
+        padding: 24px 24px 18px;
+        background: radial-gradient(circle at top left, #1f2937, #020617 60%);
+        box-shadow:
+          0 40px 80px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(148, 163, 184, 0.3);
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background: conic-gradient(
+          from 180deg at 50% 50%,
+          rgba(79, 70, 229, 0.3),
+          rgba(59, 130, 246, 0.35),
+          rgba(56, 189, 248, 0.25),
+          transparent 65%
+        );
+        opacity: 0.35;
+        mix-blend-mode: screen;
+        filter: blur(12px);
+      }
+
+      .card-inner {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .timeline-label {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(209, 213, 219, 0.7);
+        margin-bottom: 8px;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .timeline-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 11.5px;
+        color: rgba(209, 213, 219, 0.85);
+        line-height: 1.5;
+      }
+
+      .timeline-stages {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+
+      .pill {
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.38);
+        font-size: 11px;
+        color: rgba(226, 232, 240, 0.9);
+        backdrop-filter: blur(14px);
+        white-space: nowrap;
+        text-align: center;
+      }
+
+      .pill-muted {
+        border-style: dashed;
+        border-color: rgba(148, 163, 184, 0.3);
+        color: rgba(148, 163, 184, 0.9);
+        white-space: normal;
+        text-align: left;
+      }
+
+      .timeline-progress {
+        position: relative;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.9);
+        overflow: hidden;
+        margin: 10px 0 4px;
+      }
+
+      .timeline-progress-fill {
+        position: absolute;
+        inset: 0;
+        width: 62%;
+        background: linear-gradient(90deg, #4b8afe, #22c1c3);
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.7);
+      }
+
+      .timeline-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        color: rgba(148, 163, 184, 0.8);
+      }
+
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 11px;
+        color: rgba(209, 213, 219, 0.78);
+      }
+
+      .footer-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(148, 163, 184, 0.48);
+      }
+
+      .footer-badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: #22c55e;
+        box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+      }
+      .loop-flow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 14px;
+        margin-bottom: 10px;
+      }
+
+      .loop-step {
+        flex: 1 1 150px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        background: radial-gradient(
+          circle at top left,
+          rgba(59, 130, 246, 0.22),
+          rgba(15, 23, 42, 0.96)
+        );
+        font-size: 11px;
+        line-height: 1.5;
+        color: rgba(226, 232, 240, 0.96);
+      }
+
+      .loop-step strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(191, 219, 254, 0.9);
+      }
+
+      .loop-arrow {
+        flex: 0 0 auto;
+        align-self: center;
+        font-size: 18px;
+        color: rgba(96, 165, 250, 0.9);
+        opacity: 0.9;
+        padding: 0 2px;
+      }
+
+      .loop-note {
+        font-size: 10px;
+        color: rgba(148, 163, 184, 0.9);
+      }
+
+      .loop-circle {
+        position: relative;
+        width: 230px;
+        height: 230px;
+        margin: 6px auto 16px;
+        border-radius: 999px;
+        border: 1px dashed rgba(148, 163, 184, 0.55);
+        background: radial-gradient(
+          circle at 30% 0,
+          rgba(59, 130, 246, 0.25),
+          rgba(15, 23, 42, 0.96)
+        );
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      }
+
+      .loop-circle-center {
+        position: absolute;
+        inset: 58px;
+        border-radius: 999px;
+        background: radial-gradient(
+          circle at 30% 0,
+          rgba(148, 163, 184, 0.4),
+          rgba(15, 23, 42, 0.96)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        color: rgba(248, 250, 252, 0.92);
+        text-align: center;
+        padding: 8px;
+      }
+
+      .loop-node {
+        position: absolute;
+        width: 120px;
+        padding: 6px 10px;
+        border-radius: 14px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(148, 163, 184, 0.7);
+        font-size: 11px;
+        line-height: 1.5;
+        color: rgba(226, 232, 240, 0.96);
+      }
+
+      .loop-node strong {
+        display: block;
+        margin-bottom: 2px;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(191, 219, 254, 0.95);
+      }
+
+      .navigation {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 14px;
+        z-index: 1000;
+      }
+
+      .nav-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .nav-dot.active {
+        width: 40px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #4b8afe, #22c1c3);
+        box-shadow: 0 0 14px rgba(59, 130, 246, 0.5);
+      }
+
+      .nav-arrow {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 24px;
+        color: rgba(248, 250, 252, 0.75);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+        z-index: 1000;
+      }
+
+      .nav-arrow.prev {
+        left: 30px;
+      }
+
+      .nav-arrow.next {
+        right: 30px;
+      }
+
+      .slide-number {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11px;
+        color: rgba(156, 163, 175, 0.9);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="presentation">
+    <!-- 封面页 · 主题总览 -->
+      <section class="slide active" id="cover">
+      <div class="slide-inner">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>AI × 司机运营</span>
+          </div>
+          <div class="title-block">
+              <h1 class="title-main single-line">
+                AI 在 <span class="title-gradient">司机运营</span> 中的落地
+            </h1>
+              <h1 class="title-main single-line">
+                打造 <span class="subtle">越用越好的运营闭环</span>
+            </h1>
+            <p class="title-sub">
+              我们希望的不只是「自动化运营」，而是通过 AI 建立一套
+                <strong>以司机为中心的持续优化系统</strong>
+              ——围绕标签、策略和数据，让每一次运营决策都能被记录、被理解、被复用。
+            </p>
+          </div>
+          <div class="meta">
+            <div class="meta-item">
+              <span class="meta-label">主题</span>
+                <span class="meta-value">AI 在司机运营中的落地与持续优化闭环设计</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">关键词</span>
+              <span class="meta-value">标签系统 · 策略引擎 · 数据洞察 · 反馈闭环</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual">
+          <div class="card">
+            <div class="card-inner">
+              <div>
+                <div class="timeline-label">One Simple Idea</div>
+                <div class="timeline-progress" style="margin-top: 14px; height: 120px; border-radius: 999px; background: radial-gradient(circle at 30% 0, rgba(59,130,246,0.4), rgba(15,23,42,0.9)); display: flex; align-items: center; justify-content: center;">
+                  <div style="width: 86px; height: 86px; border-radius: 999px; border: 1px solid rgba(148,163,184,0.4); display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 0 40px rgba(59,130,246,0.5); background: radial-gradient(circle at 30% 0, rgba(148,163,184,0.35), rgba(15,23,42,0.96));">
+                    <div style="width: 52px; height: 52px; border-radius: 999px; background: radial-gradient(circle at 30% 0, #4b8afe, #1f2937); display: flex; align-items: center; justify-content: center; font-size: 11px; text-align: center; color: rgba(248,250,252,0.95); padding: 6px;">
+                      越用<br />越懂司机
+                    </div>
+                  </div>
+                </div>
+                <div class="timeline-labels" style="margin-top: 18px;">
+                  <span>从一次活动</span>
+                  <span>到一个系统</span>
+                </div>
+              </div>
+              <div class="card-footer" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                <div>
+                  <strong>这是一个越用越好的司机运营系统</strong>
+                  ——每一次标签、每一次策略尝试、每一次结果反馈，都会沉淀为可复用的经验，让下次效果更好。
+                </div>
+                <div class="footer-badge">
+                  <span class="footer-badge-dot"></span>
+                  <span style="white-space: nowrap;">司机运营 · 智能营销系统</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第二页 · 闭环拆解与司机生命周期关联 -->
+    <section class="slide" id="overview">
+      <div class="slide-inner">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>一条运营链路 · 一条司机旅程</span>
+          </div>
+          <div class="title-block">
+            <h1 class="title-main">
+              用
+              <span class="title-gradient">一个 AI 闭环</span>
+              贯穿司机运营全周期
+            </h1>
+            <p class="title-sub">
+              从「新司机冷启动」到「成熟司机稳态运营」，再到「流失预警与回流挽留」，同一套
+              <strong>标签—策略—数据—洞察—标签</strong>
+              的 AI 闭环在后台持续运转，让系统越用越懂每一个司机、每一个场景。
+            </p>
+            <p class="title-sub" style="margin-top: 14px;">
+              闭环拆解为
+              <strong
+                >标签生成 → 运营活动配置推荐 → 活动数据分析 → 策略效果归因 → 活动结果标注 → 数据洞察 → 动态标签生成建议</strong
+              >
+                七个步骤，它既是司机运营的工作流，也是 AI 持续优化运营效果的路径，让系统一次比一次更懂司机。
+            </p>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="card">
+            <div class="card-inner">
+              <div>
+                <div class="timeline-label">AI Driver Ops Loop · Workflow</div>
+                <div class="loop-circle">
+                  <div class="loop-circle-center">
+                    标签 → 策略 → 数据 → 洞察 → 标签<br />同一套闭环在后台持续运转。
+                  </div>
+                  <div class="loop-node" style="top: 8px; left: 50%; transform: translateX(-50%);">
+                    <strong>01 · 标签生成</strong>
+                    结构化司机行为与画像
+                  </div>
+                  <div class="loop-node" style="top: 50%; right: -64px; transform: translateY(-50%);">
+                    <strong>02 · 运营配置</strong>
+                    决定投放人群与策略
+                  </div>
+                  <div class="loop-node" style="bottom: 8px; left: 50%; transform: translateX(-50%);">
+                    <strong>03 · 数据分析</strong>
+                    监控核心指标与效果
+                  </div>
+                  <div class="loop-node" style="top: 50%; left: -64px; transform: translateY(-50%);">
+                    <strong>04 · 洞察与回流</strong>
+                    把结论回写到标签与知识库
+                  </div>
+                </div>
+                <div class="loop-note">
+                  同一套闭环持续运转在「新司机冷启动—成长—成熟—回流」全旅程上
+                </div>
+              </div>
+              <div class="card-footer" style="margin-top: 14px;">
+                <div>
+                  在每一段司机旅程上叠同一套 AI 闭环，
+                  不再依赖个别运营同学的直觉，而是用数据和智能体沉淀「可以复制的好运营」。
+                </div>
+                <div class="footer-badge">
+                  <span class="footer-badge-dot"></span>
+                  <span style="white-space: nowrap;">标签 · 行动 · 洞察 · 优化</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第三页 · AI 介入标签生成 -->
+      <section class="slide" id="tag-ai">
+        <div class="slide-inner">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>AI × 标签系统</span>
+            </div>
+            <div class="title-block">
+              <h1 class="title-main single-line">
+                让标签系统更「懂司机」
+              </h1>
+              <h1 class="title-main single-line">
+                <span class="title-gradient">AI 介入标签生成</span>
+              </h1>
+              <p class="title-sub">
+                不只是人工拍脑袋起标签，而是让 AI
+                在海量行为数据和聊天记录里先帮我们「看到人」，再建议「该起什么名字」、
+                「值不值得起一个新标签」。
+              </p>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="card">
+              <div class="card-inner">
+                <div>
+                  <div class="timeline-label">Tag Generation · AI Assist</div>
+                  <div class="timeline">
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">01 · 识别人群</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >基于司机行为数据和聊天数据，识别出具有显著特征的司机群体</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">02 · 建议新标签</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >结合历史标签经验，建议创建新标签（如「夜间活跃型」「长途偏好型」）</span
+                      >
+                </div>
+                <div class="timeline-row">
+                  <div class="timeline-stages">
+                        <span class="pill">03 · 价值评估</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >自动评估候选标签在人群区分度、覆盖规模和业务可用性上的价值打分</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div>
+                    人只需要在「AI 给出的候选人群和标签里做选择与调整」，标签系统就能在日常运营中持续被优化，
+                    越来越贴近真实的司机差异。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第三页半 · AI打标签具体落地 -->
+      <section class="slide" id="tag-implementation">
+        <div class="slide-inner">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>AI × 标签落地</span>
+            </div>
+            <div class="title-block">
+              <h1 class="title-main single-line">
+                具体如何落地：
+              </h1>
+              <h1 class="title-main single-line">
+                <span class="title-gradient">AI 打标签的三种能力</span>
+              </h1>
+              <p class="title-sub">
+                AI 打标签不是「概念演示」，而是能产出
+                <strong>具备明确业务意义、可直接用于运营决策的实用标签</strong>
+                ——从数据波动中发现显著行为模式，从策略灵感中快速验证假设，从对话文本中提取个性化特征。
+              </p>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="card">
+              <div class="card-inner">
+                <div>
+                  <div class="timeline-label">AI Tagging · Three Capabilities</div>
+                  <div class="timeline">
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">01 · 数据波动标签</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >AI 分析司机行为数据的波动，自动识别显著异常模式（如「订单量突降型」「在线时长异常波动型」），生成具备预警和干预价值的业务标签。这些标签能够有效识别异常司机群体，具备较高的人群区分度，可直接用于流失预警和主动干预策略。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">02 · 策略灵感标签</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >策略人员提出细微假设（如「周末偏好型」「价格敏感型」），AI 基于多维度数据快速验证并生成对应标签。能够快速将策略灵感转化为可投放的标签，具备良好的人群区分度，可直接用于精准营销和差异化运营。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">03 · 文本个性化标签</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >AI 分析聊天记录、反馈文本，提取个性化特征（如「服务依赖度高」「政策理解偏差」「情绪敏感型」）。能够有效识别司机的个性化特征和情感倾向，覆盖相当比例的活跃司机群体，可直接用于客服策略优化、个性化沟通和风险人群识别。</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div>
+                    这三种能力产出的标签，都经过业务价值评估：<strong>人群覆盖度、区分度、可操作性</strong>三重验证，确保每个标签都能直接用于运营活动配置，而非停留在「数据展示」层面。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第四页 · 理解运营目标与策略方案生成 -->
+      <section class="slide" id="goal-strategy">
+        <div class="slide-inner">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>AI × 运营策略</span>
+            </div>
+            <div class="title-block">
+              <h1 class="title-main">
+                从一句目标，到一组
+                <span class="title-gradient">可执行策略方案</span>
+              </h1>
+              <p class="title-sub">
+                运营人员输入业务目标（如「提升节假日订单量」），AI 会理解目标背后的业务意图，自动拆解为可执行的运营动作，结合历史活动数据和策略库，生成包含人群选择、激励方案、触达节奏、渠道配置的完整策略方案，运营人员只需在 AI 生成的方案基础上进行微调和确认。
+              </p>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="card">
+              <div class="card-inner">
+                <div>
+                  <div class="timeline-label">Goal Understanding · Strategy Draft</div>
+                  <div class="timeline">
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">01 · 理解运营目标</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >理解运营目标（如「提升节假日订单量 15%」），识别相关业务环节与限制条件</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">02 · 目标拆解</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >分解为可执行的子目标和关键指标，例如新客拉新量、老客复购率、司机在线时长等</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">03 · 生成策略方案</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >基于历史数据和策略库最佳实践，生成覆盖人群、节奏、激励、触达渠道的完整策略方案草稿</span
+                      >
+                </div>
+                <div class="timeline-row">
+                  <div class="timeline-stages">
+                        <span class="pill">04 · 多方案备选</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >提供多套备选方案（如「更激进」「更稳健」「资源友好」），供运营人员选择与微调</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div>
+                    这样一来，运营团队把更多时间花在「判断与取舍」上，而不是从零开始写方案；每一次选中的方案都会沉淀回策略库，
+                    让后续规划更高效。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第五页半 · 目标与策略生成具体落地 -->
+      <section class="slide" id="strategy-implementation">
+        <div class="slide-inner">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>AI × 策略落地</span>
+            </div>
+            <div class="title-block">
+              <h1 class="title-main single-line">
+                具体如何落地：
+              </h1>
+              <h1 class="title-main single-line">
+                <span class="title-gradient">策略落地的四大能力实现</span>
+              </h1>
+              <p class="title-sub">
+                策略落地需要具体的能力实现，确保每个功能都可以在实际场景中被使用和验证。
+                <strong>通过明确的功能表现，证明 AI 确实具备从目标理解到方案生成再到决策辅助的完整能力</strong>
+                ——每个能力都有具体、可用的功能实现。
+              </p>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="card">
+              <div class="card-inner">
+                <div>
+                  <div class="timeline-label">Strategy Implementation · Four Capabilities</div>
+                  <div class="timeline">
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">01 · 目标理解能力</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >输入业务目标（如「提升节假日订单量」），AI 能够正确识别业务环节、关键指标、司机群体、时间节点、资源约束等要素。系统会展示识别出的所有要素，运营人员可以查看和确认 AI 的理解是否准确、完整。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">02 · 目标拆解能力</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >AI 将复杂目标拆解为子目标和关键指标，并展示各指标之间的关联关系和优先级。运营人员可以查看拆解逻辑，确认指标是否合理、可执行，子目标之间的关联性是否清晰。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">03 · 方案生成能力</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >AI 生成包含人群标签组合、激励档位、触达节奏、渠道配置的完整策略方案，每个配置都附带业务逻辑说明。运营人员可以查看方案的完整性、可执行性，以及每个配置的业务逻辑是否合理。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">04 · 思维链与标注能力</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >系统提供生成方案的详细思维链，展示 AI 的推理过程；同时提供历史案例标注，展示类似场景下哪些方案效果好、哪些需要避免。运营人员可以追溯推理过程，参考历史案例辅助决策判断。</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div>
+                    每个能力都有具体的功能实现和可查看的输出结果，确保策略落地不是「概念演示」，而是<strong>可操作、可查看、可使用</strong>的完整能力体系。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第五页 · 报告生成 · 效果归因 · 策略标注 -->
+      <section class="slide" id="report-attribution">
+        <div class="slide-inner">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>AI × 运营复盘</span>
+            </div>
+            <div class="title-block">
+              <h1 class="title-main">
+                让每一次活动都有
+                <span class="title-gradient">可复用的结论</span>
+              </h1>
+              <p class="title-sub">
+                针对生成并上线的运营活动，AI 不仅负责「看数据」，还能自动形成周报、月报和活动复盘，
+                做策略效果归因，并通过标注机制让策略规划师告诉系统「什么是好方案」。
+              </p>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="card">
+              <div class="card-inner">
+                <div>
+                  <div class="timeline-label">Report · Attribution · Feedback</div>
+                  <div class="timeline">
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">01 · 自动报告生成</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >围绕核心运营目标，自动生成周报、月报和活动复盘，结构化呈现亮点、风险和关键结论</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">02 · 指标监控与预警</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >持续监控核心指标，在转化率、留存、订单量等偏离预期时进行及时预警</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">03 · 策略效果归因</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >多维度分析营销活动效果，结合因果分析方法，对触达、激励、节奏等要素进行效果归因</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">04 · 优化建议</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >基于归因结果提出下一轮优化建议，例如「收紧人群」「调整档位」「更换触达渠道」</span
+                      >
+                </div>
+                <div class="timeline-row">
+                  <div class="timeline-stages">
+                        <span class="pill">05 · 策略标注反馈</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >为具体策略方案、活动旅程标注「好/一般/需避免」，持续优化 AI 策略规划师的下次规划</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div>
+                    每一轮活动结束后，都能把「哪些做得好、为什么好」沉淀进策略库，
+                    让以后生成的方案更像团队里最懂业务的那位专家。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第七页半 · 复盘能力具体落地 -->
+      <section class="slide" id="report-implementation">
+        <div class="slide-inner">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>AI × 复盘落地</span>
+            </div>
+            <div class="title-block">
+              <h1 class="title-main single-line">
+                具体如何落地：
+              </h1>
+              <h1 class="title-main single-line">
+                <span class="title-gradient">复盘能力的五大功能实现</span>
+              </h1>
+              <p class="title-sub">
+                复盘能力需要具体的功能实现，确保每个功能都可以在实际场景中被使用和验证。
+                <strong>通过明确的功能表现，证明 AI 确实具备从报告生成到效果归因再到策略优化的完整能力</strong>
+                ——每个功能都有具体、可用的实现方式。
+              </p>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="card">
+              <div class="card-inner">
+                <div>
+                  <div class="timeline-label">Report Implementation · Five Capabilities</div>
+                  <div class="timeline">
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">01 · 自动报告生成功能</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >系统自动生成周报、月报和活动复盘，结构化展示亮点、风险和关键结论。运营人员可以查看报告内容，确认结构是否完整、结论是否准确、是否覆盖核心运营目标。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">02 · 指标监控与预警功能</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >系统持续监控转化率、留存、订单量等核心指标，在指标偏离预期时自动触发预警。运营人员可以查看预警记录、预警准确性，确认系统是否及时识别异常情况。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">03 · 策略效果归因功能</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >系统多维度分析活动效果，对触达、激励、节奏等要素进行效果归因，展示各要素对最终效果的贡献度。运营人员可以查看归因结果，确认归因逻辑是否合理、结论是否可解释。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">04 · 优化建议功能</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >系统基于归因结果提出优化建议（如「收紧人群」「调整档位」「更换触达渠道」），并说明建议的理由。运营人员可以查看建议内容，确认建议是否合理、是否具备可操作性。</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">05 · 策略标注反馈功能</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >运营人员可以为策略方案、活动旅程标注「好/一般/需避免」，系统记录标注并用于优化后续策略规划。运营人员可以查看标注历史，确认系统是否基于标注调整了策略生成逻辑。</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div>
+                    每个功能都有具体的实现方式和可查看的输出结果，确保复盘能力不是「概念演示」，而是<strong>可操作、可查看、可使用</strong>的完整功能体系。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第六页 · 智能客服 · 标签反哺 -->
+      <section class="slide" id="assistant-loop">
+        <div class="slide-inner">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>AI × 司机服务</span>
+            </div>
+            <div class="title-block">
+              <h1 class="title-main">
+                让
+                <span class="title-gradient">智能客服</span>
+                变成标签系统的「前线触角」
+              </h1>
+              <p class="title-sub">
+                不只是回答司机问题，而是用 7×24 小时在线的智能客服，把标准解决方案、司机诉求和情绪反馈都沉淀下来，
+                反哺到智能标签体系里，为后续运营活动提供更细粒度的人群视图。
+              </p>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="card">
+              <div class="card-inner">
+                <div>
+                  <div class="timeline-label">Smart Support · Tag Feedback Loop</div>
+                  <div class="timeline">
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">01 · 7×24 小时响应</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >通过智能客服 7×24 小时无间隙回复司机问题，覆盖常见咨询和操作指导</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">02 · 标准解决方案</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >提供标准的问答对和解决方案，让司机可以快速掌握处理步骤，降低人工服务压力</span
+                      >
+                    </div>
+                    <div class="timeline-row">
+                      <div class="timeline-stages">
+                        <span class="pill">03 · 对话驱动标签优化</span>
+                      </div>
+                      <span class="pill pill-muted"
+                        >在聊天过程中获取更多司机诉求与行为线索，反哺智能标签体系，丰富「风险敏感度」「服务依赖度」「政策敏感型」等精细标签</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div>
+                    服务触点的一问一答，最终都会汇入标签与策略库，
+                    帮助运营为不同类型司机设计更精细化、更贴合需求的运营活动。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第七页 · 总结 · 越用越好的司机运营系统 -->
+      <section class="slide" id="summary">
+        <div class="slide-inner">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              <span>AI × 司机运营全生命周期</span>
+            </div>
+            <div class="title-block">
+              <h1 class="title-main">
+                把
+                <span class="title-gradient">知识增强 + 标注 + 数据回流</span>
+                用在每一次司机运营上
+              </h1>
+              <p class="title-sub">
+                知识增强负责「记住与引用」，把历史标签、策略和活动效果变成可以被使用的知识；
+                标注负责「告诉系统什么是好方案」，数据回流负责「用真实结果校正偏差」。
+              </p>
+              <p class="title-sub" style="margin-top: 14px;">
+                当这三件事围绕司机标签、运营策略和服务触点长期运转时，
+                AI 在每一次给出分析、标签建议或运营方案时，都不再是「从零开始想」，
+                而是站在过去无数次优秀运营案例的肩膀上，让司机运营系统真正做到越用越好。
+              </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <div class="nav-arrow prev" onclick="previousSlide()">‹</div>
+    <div class="nav-arrow next" onclick="nextSlide()">›</div>
+    <div class="navigation" id="navigation"></div>
+    <div class="slide-number" id="slideNumber">1 / 7 · 封面</div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const totalSlides = slides.length;
+
+      const navigation = document.getElementById("navigation");
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("div");
+        dot.className = "nav-dot";
+        if (i === 0) dot.classList.add("active");
+        dot.onclick = () => goToSlide(i);
+        navigation.appendChild(dot);
+      }
+
+      function updateSlide() {
+        slides.forEach((slide, index) => {
+          slide.classList.remove("active", "prev");
+          if (index === currentSlide) {
+            slide.classList.add("active");
+          } else if (index < currentSlide) {
+            slide.classList.add("prev");
+          }
+        });
+
+        document
+          .querySelectorAll(".nav-dot")
+          .forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentSlide);
+          });
+
+        const labels = [
+          "封面",
+          "闭环总览",
+          "AI 介入标签生成",
+          "AI打标签具体落地",
+          "目标与策略生成",
+          "策略生成具体落地",
+          "复盘与归因",
+          "复盘能力具体落地",
+          "智能客服与标签反哺",
+          "总结"
+        ];
+        document.getElementById(
+          "slideNumber"
+        ).textContent = `${currentSlide + 1} / ${totalSlides} · ${
+          labels[currentSlide] || ""
+        }`;
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          updateSlide();
+        }
+      }
+
+      function previousSlide() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          updateSlide();
+        }
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        updateSlide();
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          nextSlide();
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          previousSlide();
+        }
+      });
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      document.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+
+      document.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          nextSlide();
+        }
+        if (touchEndX > touchStartX + 50) {
+          previousSlide();
+        }
+      }
+    </script>
+  </body>
+</html>
+
+

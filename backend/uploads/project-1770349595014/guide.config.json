@@ -1,0 +1,756 @@
+{
+  "hant": [
+    {
+      "hidden": true,
+      "title": "去口岸指南",
+      "nodes": [
+        {
+          "name": "div",
+          "attrs": {
+            "style": "display: flex;"
+          },
+          "children": [
+            {
+              "name": "div",
+              "attrs": {
+                "style": "display: flex; width: 3px; height: 14px; margin: 6px; background-color: #377DF9;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": ""
+                }
+              ]
+            },
+            {
+              "name": "div",
+              "attrs": {
+                "style": "font-size: 16px; font-weight: 600; line-height: 24px; white-space: pre-line;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": "自駕車珠海金灣機場至口岸路線指引"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 14px; font-weight: 400; line-height: 24px; white-space: pre-line; padding-top:16px;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "①北送客平臺\n金海東路——金灣路——珠海大道——環島東路——港澳大道——福臨道——北送客平臺\n\n②北迎客平臺\n金海東路——金灣路——珠海大道——環島東路——環島東路輔路——北迎客平臺\n\n③南送客平臺\n金海東路——金灣路——珠海大道——環島東路——港澳大道——福臨道——南送客平臺\n\n④南迎客平臺\n金海東路——金灣路——珠海大道——環島東路——環島東路輔路——濠江—路——南迎客平臺"
+            }
+          ]
+        },
+        {
+          "name": "div",
+          "attrs": {
+            "style": "display: flex; padding-top: 30px;"
+          },
+          "children": [
+            {
+              "name": "div",
+              "attrs": {
+                "style": "display: flex; width: 3px; height: 14px; margin: 6px; background-color: #377DF9;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": ""
+                }
+              ]
+            },
+            {
+              "name": "div",
+              "attrs": {
+                "style": "font-size: 16px; font-weight: 600; line-height: 24px; white-space: pre-line;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": "自駕車廣州市至口岸路線指引"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 14px; font-weight: 400; line-height: 24px; white-space: pre-line; padding-top:16px;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "①北送客平臺\n廣州——廣珠西線高速（珠海方向）金灣路——環島東路——港澳大道——福臨道——北送客平臺\n\n②北迎客平臺\n廣州——廣珠西線高速（珠海方向）金灣路——環島東路——環島東路輔路——北迎客平臺\n\n③南送客平臺\n廣州——廣珠西線高速（珠海方向）金灣路——環島東路——港澳大道——福臨道——南送客平臺\n\n④南迎客平臺\n廣州——廣珠西線高速（珠海方向）金灣路——環島東路——環島東路輔路——濠江路——南迎客平臺"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "過關指南",
+      "nodes": [
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 14px; font-weight: 400; line-height: 24px; white-space: pre-line;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "Q：通關模式\nA：新橫琴口岸有3種通關模式,合作自助通道、傳統人工通道、合作人工通道。其中合作自助通道采用「合作查驗、一次放行」通關新模式，只需排一次隊就可完成出入境手續,未來還將在客、貨車查驗中亦采用「合作查驗、一次放行」模式,適用人群囊括內地、澳門、香港和臺灣居民。(PS:目前港珠澳大橋珠澳口岸同樣采取\"合作查驗、一次放行\"通關模式,但僅針對旅檢通道)"
+            }
+          ]
+        },
+        {
+          "name": "img",
+          "attrs": {
+            "style": "width: 100%; margin-top: 12px;",
+            "src": "https://hqcx.hengqin.gov.cn/static/image/guide_2.jpg"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "name": "img",
+          "attrs": {
+            "style": "width: 100%; margin-top: 12px;",
+            "src": "https://hqcx.hengqin.gov.cn/static/image/guide_3.jpg"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "name": "img",
+          "attrs": {
+            "style": "width: 100%; margin-top: 12px;",
+            "src": "https://hqcx.hengqin.gov.cn/static/image/guide_4.jpg"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "過關時間指引",
+      "nodes": [
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 14px; font-weight: 400; line-height: 24px; white-space: pre-line;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "橫琴口岸實行24小時通關：\n(1) 0:00-24:00可步行通關澳門\n(2) 0:00-24:00可自駕通關澳門"
+            }
+          ]
+        },
+        {
+          "name": "div",
+          "attrs": {
+            "style": "display: flex; margin: 20px 0px 8px 0px"
+          },
+          "children": [
+            {
+              "name": "div",
+              "attrs": {
+                "style": "display: flex; width: 3px; height: 14px; margin: 6px; background-color: #377DF9;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": ""
+                }
+              ]
+            },
+            {
+              "name": "div",
+              "attrs": {
+                "style": "font-size: 16px; font-weight: 600; line-height: 24px; white-space: pre-line;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": "橫琴口岸通關時間"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "table",
+          "attrs": {
+            "style": "width: 100%; border-collapse: collapse; border: 1px solid #DDE4F1; text-align: left; "
+          },
+          "children": [
+            {
+              "name": "thead",
+              "children": [
+                {
+                  "name": "tr",
+                  "attrs": {
+                    "style": "background-color: rgba(36, 82, 165, 0.06)"
+                  },
+                  "children": [
+                    {
+                      "name": "th",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; color: #2452a5; padding: 7px 12px 7px 12px; width: 65%; "
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "區域"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "th",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; color: #2452a5; padding: 7px 12px 7px 12px; width: 35%; "
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "開放時間"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "tbody",
+              "attrs": {
+                "style": "background-color: white;"
+              },
+              "children": [
+                {
+                  "name": "tr",
+                  "children": [
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "旅檢通關（非自駕）"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "0:00-24:00"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "tr",
+                  "children": [
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "旅檢通關（自駕）"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "0:00-24:00"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "tr",
+                  "children": [
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "貨檢通關（貨檢查驗通道）"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "8:00-20:00"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "停車指引",
+      "downloadSrc": "https://hqcx.hengqin.gov.cn/static/image/guide_1.jpg",
+      "nodes": [
+        {
+          "name": "img",
+          "attrs": {
+            "style": "width: 100%;",
+            "src": "https://hqcx.hengqin.gov.cn/static/image/guide_1.jpg"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "政策指引",
+      "nodes": [
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 13px; text-align: center; line-height: 20px;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "請微信關註[橫琴口岸]公眾號"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "hans": [
+    {
+      "hidden": true,
+      "title": "去口岸指南",
+      "nodes": [
+        {
+          "name": "div",
+          "attrs": {
+            "style": "display: flex;"
+          },
+          "children": [
+            {
+              "name": "div",
+              "attrs": {
+                "style": "display: flex; width: 3px; height: 14px; margin: 6px; background-color: #377DF9;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": ""
+                }
+              ]
+            },
+            {
+              "name": "div",
+              "attrs": {
+                "style": "font-size: 16px; font-weight: 600; line-height: 24px; white-space: pre-line;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": "自驾车珠海金湾机场至口岸路线指引"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 14px; font-weight: 400; line-height: 24px; white-space: pre-line; padding-top:16px;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "①北送客平台\n金海东路——金湾路——珠海大道——环岛东路——港澳大道——福临道——北送客平台\n\n②北迎客平台\n金海东路——金湾路——珠海大道——环岛东路——环岛东路辅路——北迎客平台\n\n③南送客平台\n金海东路——金湾路——珠海大道——环岛东路——港澳大道——福临道——南送客平台\n\n④南迎客平台\n金海东路——金湾路——珠海大道——环岛东路——环岛东路辅路——濠江—路——南迎客平台"
+            }
+          ]
+        },
+        {
+          "name": "div",
+          "attrs": {
+            "style": "display: flex; padding-top: 30px;"
+          },
+          "children": [
+            {
+              "name": "div",
+              "attrs": {
+                "style": "display: flex; width: 3px; height: 14px; margin: 6px; background-color: #377DF9;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": ""
+                }
+              ]
+            },
+            {
+              "name": "div",
+              "attrs": {
+                "style": "font-size: 16px; font-weight: 600; line-height: 24px; white-space: pre-line;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": "自驾车广州市至口岸路线指引"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 14px; font-weight: 400; line-height: 24px; white-space: pre-line; padding-top:16px;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "①北送客平台\n广州——广珠西线高速（珠海方向）金湾路——环岛东路——港澳大道——福临道——北送客平台\n\n②北迎客平台\n广州——广珠西线高速（珠海方向）金湾路——环岛东路——环岛东路辅路——北迎客平台\n\n③南送客平台\n广州——广珠西线高速（珠海方向）金湾路——环岛东路——港澳大道——福临道——南送客平台\n\n④南迎客平台\n广州——广珠西线高速（珠海方向）金湾路——环岛东路——环岛东路辅路——濠江路——南迎客平台"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "过关指南",
+      "nodes": [
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 14px; font-weight: 400; line-height: 24px; white-space: pre-line;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "Q：通关模式\nA：新横琴口岸有3种通关模式,合作自助通道、传统人工通道、合作人工通道。其中合作自助通道采用“合作查验、一次放行”通关新模式，只需排一次队就可完成出入境手续,未来还将在客、货车查验中亦采用“合作查验、一次放行”模式,适用人群囊括内地、澳门、香港和台湾居民。(PS:目前港珠澳大桥珠澳口岸同样采取\"合作查验、一次放行\"通关模式,但仅针对旅检通道)"
+            }
+          ]
+        },
+        {
+          "name": "img",
+          "attrs": {
+            "style": "width: 100%; margin-top: 12px;",
+            "src": "https://hqcx.hengqin.gov.cn/static/image/guide_2.jpg"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "name": "img",
+          "attrs": {
+            "style": "width: 100%; margin-top: 12px;",
+            "src": "https://hqcx.hengqin.gov.cn/static/image/guide_3.jpg"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "name": "img",
+          "attrs": {
+            "style": "width: 100%; margin-top: 12px;",
+            "src": "https://hqcx.hengqin.gov.cn/static/image/guide_4.jpg"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "过关时间指引",
+      "nodes": [
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 14px; font-weight: 400; line-height: 24px; white-space: pre-line;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "橫琴口岸实行24小时通关：\n(1) 0:00-24:00可步行通关澳门\n(2) 0:00-24:00可自驾通关澳门"
+            }
+          ]
+        },
+        {
+          "name": "div",
+          "attrs": {
+            "style": "display: flex; margin: 20px 0px 8px 0px"
+          },
+          "children": [
+            {
+              "name": "div",
+              "attrs": {
+                "style": "display: flex; width: 3px; height: 14px; margin: 6px; background-color: #377DF9;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": ""
+                }
+              ]
+            },
+            {
+              "name": "div",
+              "attrs": {
+                "style": "font-size: 16px; font-weight: 600; line-height: 24px; white-space: pre-line;"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "text": "横琴口岸通关时间"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "table",
+          "attrs": {
+            "style": "width: 100%; border-collapse: collapse; border: 1px solid #DDE4F1; text-align: left; "
+          },
+          "children": [
+            {
+              "name": "thead",
+              "children": [
+                {
+                  "name": "tr",
+                  "attrs": {
+                    "style": "background-color: rgba(36, 82, 165, 0.06)"
+                  },
+                  "children": [
+                    {
+                      "name": "th",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; color: #2452a5; padding: 7px 12px 7px 12px; width: 65%; "
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "区域"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "th",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; color: #2452a5; padding: 7px 12px 7px 12px; width: 35%; "
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "开放时间"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "tbody",
+              "attrs": {
+                "style": "background-color: white;"
+              },
+              "children": [
+                {
+                  "name": "tr",
+                  "children": [
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "旅检通关（非自驾）"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "0:00-24:00"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "tr",
+                  "children": [
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "旅检通关（自驾）"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "0:00-24:00"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "tr",
+                  "children": [
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "货检通关（货检查验通道）"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "td",
+                      "attrs": {
+                        "style": "border: 1px solid #DDE4F1; padding: 7px 12px 7px 12px;"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "8:00-20:00"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "停车指引",
+      "downloadSrc": "https://hqcx.hengqin.gov.cn/static/image/guide_1.jpg",
+      "nodes": [
+        {
+          "name": "img",
+          "attrs": {
+            "style": "width: 100%;",
+            "src": "https://hqcx.hengqin.gov.cn/static/image/guide_1.jpg"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "政策指引",
+      "nodes": [
+        {
+          "name": "div",
+          "attrs": {
+            "style": "font-size: 13px; text-align: center; line-height: 20px;"
+          },
+          "children": [
+            {
+              "type": "text",
+              "text": "请微信关注[横琴口岸]公众号"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
