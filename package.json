@@ -11,7 +11,6 @@
     "dev": "NODE_ENV=development node build.js",
     "start-app": "npx concurrently \"cd backend && npm start\" \"cd example/supabase && npm run dev\"",
     "install-all": "npm install && cd backend && npm install && cd ../example/supabase && npm install",
-    "postinstall": "cd backend && npm install && cd ../example/supabase && npm install",
     "prepublishOnly": "npm run build"
   },
   "bin": {

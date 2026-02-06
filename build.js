@@ -6,8 +6,8 @@ for (const key in process.env) {
   define[`process.env.${key}`] = JSON.stringify(process.env[key]);
 }
 
-define['process.env.IPFS_PREVIEW_URL'] = JSON.stringify(process.env.IPFS_PREVIEW_URL);
-define['process.env.SECRET_KEY'] = JSON.stringify(process.env.SECRET_KEY);
+define['process.env.IPFS_PREVIEW_URL'] = JSON.stringify(process.env.IPFS_PREVIEW_URL || '');
+define['process.env.SECRET_KEY'] = JSON.stringify(process.env.SECRET_KEY || '');
 
 esbuild.build({
   entryPoints: ['bin/index.ts'],
