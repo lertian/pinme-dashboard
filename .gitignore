@@ -11,3 +11,6 @@ backend/uploads/
 backend/database.db
 *.sqlite
 *.db
+
+# Large archives
+归档.zip
